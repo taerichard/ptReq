@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PersonalTrainer.Data;
 using PersonalTrainer.Models;
 
 namespace PersonalTrainer.Controllers
 {
     [Route("api/[controller]")]
-    public class TrainersController : Controller
+    public class TrainersController : ControllerBase
     {
-        private readonly TrainersContext _trainerDb;
+        private readonly TrainerContext _trainerDb;
 
-        public TrainersController(TrainersContext TrainerContext)
+        public TrainersController(TrainerContext trainerDb)
         {
-            _trainerDb = TrainerContext;
+            _trainerDb = trainerDb;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Json("hello");
+            return Ok("hello");
         }
     }
 }
