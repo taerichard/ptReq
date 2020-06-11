@@ -11,5 +11,12 @@ namespace PersonalTrainer.Data
         }
 
         public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<Location> Locations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Trainer>().ToTable("Trainer");
+            modelBuilder.Entity<Location>().ToTable("Location");
+        }
     }
 }

@@ -113,8 +113,6 @@ C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Deb
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\obj\Debug\netcoreapp3.1\PersonalTrainer.csproj.CoreCompileInputs.cache
-C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\obj\Debug\netcoreapp3.1\PersonalTrainer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll

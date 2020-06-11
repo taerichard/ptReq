@@ -27,7 +27,7 @@ namespace PersonalTrainer
         {
             services.AddControllers();
             services.AddDbContext<TrainerContext>(options =>
-             options.UseSqlServer(Configuration.GetConnectionString("TrainerContext")));
+             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
