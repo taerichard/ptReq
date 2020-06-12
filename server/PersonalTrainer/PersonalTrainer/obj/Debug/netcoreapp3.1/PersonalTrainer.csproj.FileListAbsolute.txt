@@ -122,3 +122,8 @@ C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Deb
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\Bogus.dll
+C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\obj\Debug\netcoreapp3.1\PersonalTrainer.csproj.CoreCompileInputs.cache
+C:\Users\Owner\source\repos\ptReq\server\PersonalTrainer\PersonalTrainer\obj\Debug\netcoreapp3.1\PersonalTrainer.MvcApplicationPartsAssemblyInfo.cache

@@ -22,7 +22,8 @@ namespace PersonalTrainer.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("hello");
+            IEnumerable<Trainer> trainers = _trainerDb.Trainers;
+            return Ok(trainers);
         }
     }
 }

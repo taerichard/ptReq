@@ -10,7 +10,7 @@ using Bogus;
 namespace PersonalTrainer.Data
 {
     // called after database is created.
-    public static class DbInitializer
+    public static class SeedData
     {
         public static void Initialize(TrainerContext context)
         {
@@ -22,22 +22,12 @@ namespace PersonalTrainer.Data
             }
 
             Trainer trainer1 = CreateTrainer();
-            Trainer trainer2 = CreateTrainer();
             Location location1 = CreateLocation();
-            Location location2 = CreateLocation();
 
-            var trainers = new List<Trainer>
-            {
-                trainer1, trainer2,
-            };
+            trainer1.Location = location1;
 
-            var locations = new List<Location>
-            {
-                location1, location2
-            };
-
-            context.Trainers.AddRange(trainers);
-            context.Locations.AddRange(locations);
+            context.Trainers.Add(trainer1);
+            context.SaveChanges();
         }
 
         public static Trainer CreateTrainer()
@@ -50,7 +40,7 @@ namespace PersonalTrainer.Data
                 FirstName = faker.Name.FirstName(),
                 LastName = faker.Name.LastName(),
                 Email = faker.Internet.Email(),
-                CurrentLocation = CreateLocation()
+                Location = CreateLocation()
             };
 
             return trainer;

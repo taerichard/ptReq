@@ -15,8 +15,8 @@ namespace PersonalTrainer.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Trainer>().ToTable("Trainer");
-            modelBuilder.Entity<Location>().ToTable("Location");
+            modelBuilder.Entity<Trainer>().ToTable("Trainers").Ignore("Location");
+            modelBuilder.Entity<Location>().ToTable("Locations");
         }
     }
 }
