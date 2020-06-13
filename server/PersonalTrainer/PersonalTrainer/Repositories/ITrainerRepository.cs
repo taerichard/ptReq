@@ -6,16 +6,16 @@ using PersonalTrainer.Models;
 
 namespace PersonalTrainer.Repositories
 {
-    internal interface ITrainerRepository
+    public interface ITrainerRepository
     {
-        Trainer Post(Trainer trainer);
+        Trainer Add(Trainer trainer);
 
-        void Delete(int id);
+        void DeleteById(int id);
 
         IEnumerable<Trainer> GetTrainers();
 
-        Trainer GetTrainer(Trainer trainer);
+        Trainer GetTrainerById(int id);
 
-        void Edit(int id);
+        void Update(Trainer trainer);
     }
 }

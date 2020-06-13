@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using PersonalTrainer.Data;
+using PersonalTrainer.Repositories;
 
 namespace PersonalTrainer
 {
@@ -26,6 +27,8 @@ namespace PersonalTrainer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddTransient<ITrainerRepository, TrainerRepository>();
+
             services.AddDbContext<TrainerContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("PtDatabase")));
         }

@@ -13,9 +13,6 @@ namespace PersonalTrainer.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-
-        [ForeignKey("Location")]
-        //[NotMapped]
-        public Location Location { get; set; }
+        public IEnumerable<TrainerLocation> Locations { get; set; }
     }
 }

@@ -6,24 +6,33 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PersonalTrainer.Data;
 using PersonalTrainer.Models;
+using PersonalTrainer.Repositories;
 
 namespace PersonalTrainer.Controllers
 {
     [Route("api/[controller]")]
     public class TrainersController : ControllerBase
     {
-        private readonly TrainerContext _trainerDb;
+        private readonly ITrainerRepository _trainerRepository;
 
-        public TrainersController(TrainerContext trainerDb)
+        public TrainersController(ITrainerRepository trainerRepository)
         {
-            _trainerDb = trainerDb;
+            _trainerRepository = trainerRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            IEnumerable<Trainer> trainers = _trainerDb.Trainers;
+            var trainers = _trainerRepository.GetTrainers();
             return Ok(trainers);
+        }
+
+        [HttpPost]
+        public IActionResult Create(Trainer trainer)
+        {
+            Trainer newTrainer = _trainerRepository.Add(trainer);
+
+            return Ok(newTrainer);
         }
     }
 }
