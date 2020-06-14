@@ -10,5 +10,7 @@ namespace PersonalTrainer.Models
         public int Id { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public IEnumerable<Trainer> Trainers { get; set; }
+        public IEnumerable<TrainerLocation> TrainerLocation { get; set; }
     }
 }

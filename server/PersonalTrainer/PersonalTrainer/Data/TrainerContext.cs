@@ -17,20 +17,21 @@ namespace PersonalTrainer.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Trainer>().ToTable("Trainer");
-            //.HasMany(t => t.Locations)
-            //.WithOne();
-
             modelBuilder.Entity<Location>().ToTable("Location");
+            modelBuilder.Entity<TrainerLocation>().ToTable("TrainerLocation");
 
             modelBuilder.Entity<TrainerLocation>()
-                .HasKey(l => new { l.TrainerId, l.LocationId });
+                .HasKey(tl => new { tl.TrainerId, tl.LocationId });
 
             modelBuilder.Entity<TrainerLocation>()
-                .HasOne(t => t.Location);
+                .HasOne(tr => tr.Trainer)
+                .WithMany(tr => tr.TrainerLocations)
+                .HasForeignKey(tr => tr.TrainerId);
 
             modelBuilder.Entity<TrainerLocation>()
-                .HasOne(t => t.Trainer)
-                .WithMany(t => t.Locations);
+                .HasOne(tr => tr.Location)
+                .WithMany(tr => tr.TrainerLocation)
+                .HasForeignKey(tr => tr.LocationId);
         }
     }
 }
