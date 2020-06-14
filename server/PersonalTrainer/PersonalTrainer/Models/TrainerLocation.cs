@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonalTrainer.Models
 {
+    [NotMapped]
     public class TrainerLocation
     {
         public int Id { get; set; }
