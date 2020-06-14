@@ -15,5 +15,8 @@ namespace PersonalTrainer.Models
         public string Email { get; set; }
         public IEnumerable<TrainerLocation> TrainerLocations { get; set; }
         public IEnumerable<Location> Locations { get; set; }
+
+        // required for many:many relationship
+        public Location Location { get; set; }
     }
 }

@@ -28,14 +28,9 @@ namespace PersonalTrainer.Repositories
 
         public Trainer Add(Trainer trainer)
         {
-            _trainerContext.Trainers.Add(trainer);
-
-            var locations = trainer.Locations
-                .Select(l => new Location { City = l.Location.City, State = l.Location.State });
-            _trainerContext.Locations.AddRange(locations);
-
-            _trainerContext.TrainerLocations.a
-            _trainerContext.SaveChanges();
+            //_trainerContext.Trainers.Add(trainer);
+            //_trainerContext.SaveChanges();
+            return new Trainer();
         }
 
         public void DeleteById(int id)

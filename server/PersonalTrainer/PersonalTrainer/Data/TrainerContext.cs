@@ -16,8 +16,14 @@ namespace PersonalTrainer.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Trainer>().ToTable("Trainer");
-            modelBuilder.Entity<Location>().ToTable("Location");
+            //modelBuilder.Entity<Trainer>().ToTable("Trainer")
+            //    .HasMany(tr => tr.Locations)
+            //    .WithOne(tr => tr.Trainer);
+
+            //modelBuilder.Entity<Location>().ToTable("Location")
+            //    .HasMany(l => l.Trainers)
+            //    .WithOne(l => l.Location);
+
             modelBuilder.Entity<TrainerLocation>().ToTable("TrainerLocation");
 
             modelBuilder.Entity<TrainerLocation>()
