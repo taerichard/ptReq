@@ -13,11 +13,6 @@ namespace PersonalTrainer.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-
-        //public IEnumerable<TrainerLocation> TrainerLocations { get; set; }
-        public IEnumerable<Location> Locations { get; set; }
-
-        // required for many:many relationship
-        public Location Location { get; set; }
+        public ICollection<TrainerLocation> TrainerLocations { get; set; }
     }
 }

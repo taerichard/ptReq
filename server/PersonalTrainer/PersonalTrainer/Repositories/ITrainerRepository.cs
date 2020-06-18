@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PersonalTrainer.Models;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
+//using PersonalTrainer.Models;
 
-namespace PersonalTrainer.Repositories
-{
-    public interface ITrainerRepository
-    {
-        Trainer Add(Trainer trainer);
+//namespace PersonalTrainer.Repositories
+//{
+//    public interface ITrainerRepository
+//    {
+//        Trainer Add(Trainer trainer);
 
-        void DeleteById(int id);
+//        void DeleteById(int id);
 
-        IEnumerable<Trainer> GetTrainers();
+//        IEnumerable<Trainer> GetTrainers();
 
-        Trainer GetTrainerById(int id);
+//        Trainer GetTrainerById(int id);
 
-        void Update(Trainer trainer);
-    }
-}
+//        void Update(Trainer trainer);
+//    }
+//}

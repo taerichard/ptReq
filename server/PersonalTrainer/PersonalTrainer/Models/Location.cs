@@ -10,10 +10,6 @@ namespace PersonalTrainer.Models
         public int Id { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public IEnumerable<Trainer> Trainers { get; set; }
-        //public IEnumerable<TrainerLocation> TrainerLocations { get; set; }
-
-        // required for many:many relationship
-        public Trainer Trainer { get; set; }
+        public ICollection<TrainerLocation> TrainerLocations { get; set; }
     }
 }
