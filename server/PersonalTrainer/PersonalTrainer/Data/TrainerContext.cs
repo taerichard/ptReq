@@ -16,8 +16,21 @@ namespace PersonalTrainer.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Trainer>().ToTable("Trainer")
+                .HasKey(t => t.Id);
+
+            modelBuilder.Entity<Trainer>()
+                .Property<string>("FirstName");
+            modelBuilder.Entity<Trainer>()
+                .Property<string>("LastName");
+            modelBuilder.Entity<Trainer>()
+                .Property<string>("Email");
+
+            modelBuilder.Entity<Location>().ToTable("Location")
+                .HasKey(l => l.Id);
+
             modelBuilder.Entity<TrainerLocation>().ToTable("TrainerLocation")
-                .HasKey(tl => new { tl.TrainerId, tl.LocationId });
+                .HasKey(tl => tl.Id);
 
             modelBuilder.Entity<TrainerLocation>()
                 .HasOne(t => t.Trainer)

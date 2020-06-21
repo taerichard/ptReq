@@ -21,6 +21,11 @@ namespace PersonalTrainer.Controllers
         public IActionResult Get()
         {
             var trainerLocation = _trainerLocationRepository.Get();
+            //if (trainerLocation.Count == 0)
+            //{
+            //    return BadRequest();
+            //}
+
             return Ok(trainerLocation);
         }
     }
