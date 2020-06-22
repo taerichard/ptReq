@@ -44,5 +44,10 @@ namespace PersonalTrainer.Repositories
 
             return trainerLocations;
         }
+
+        public void Remove(TrainerLocation trainerLocation)
+        {
+            _trainerContext.TrainerLocations.Remove(trainerLocation);
+        }
     }
 }

@@ -56,5 +56,10 @@ namespace PersonalTrainer.Controllers
 
             return Ok(trainerLocation);
         }
+
+        [HttpDelete]
+        public IActionResult Remove(TrainerLocationViewModel trainerLocationViewModel)
+        {
+        }
     }
 }
