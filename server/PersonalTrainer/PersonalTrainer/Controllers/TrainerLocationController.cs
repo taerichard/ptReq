@@ -21,31 +21,30 @@ namespace PersonalTrainer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(TrainerLocationParameter parameter)
+        public IActionResult Create(TrainerLocationViewModel trainerLocationViewModel)
         {
-            TrainerLocationViewModel trainerLocationViewModel = new TrainerLocationViewModel
+            TrainerLocation trainerLocation = new TrainerLocation
             {
-                Trainer = new Trainer
-                {
-                    FirstName = parameter.Trainer.FirstName,
-                    LastName = parameter.Trainer.LastName,
-                    Email = parameter.Trainer.Email
-                },
-
                 Location = new Location
                 {
-                    City = parameter.Location.City,
-                    State = parameter.Location.State,
-                }
-            };
+                    City = trainerLocationViewModel.Location.City,
+                    State = trainerLocationViewModel.Location.State
+                },
 
-            TrainerLocation trainerLocation = _trainerLocationRepository
-                .CreateTrainerLocation(trainerLocationViewModel.Trainer, trainerLocationViewModel.Location);
+                Trainer = new Trainer
+                {
+                    FirstName = trainerLocationViewModel.Trainer.FirstName,
+                    LastName = trainerLocationViewModel.Trainer.LastName,
+                    Email = trainerLocationViewModel.Trainer.Email
+                },
+            };
 
             if (trainerLocation == null)
             {
                 return BadRequest();
             }
+
+            _trainerLocationRepository.CreateTrainerLocation(trainerLocation);
 
             return Ok(trainerLocationViewModel);
         }

@@ -10,6 +10,7 @@ namespace PersonalTrainer.Repositories
     {
         ICollection<TrainerLocation> Get();
 
-        TrainerLocation CreateTrainerLocation(Trainer trainer, Location location);
+        //TrainerLocation CreateTrainerLocation(Trainer trainer, Location location);
+        TrainerLocation CreateTrainerLocation(TrainerLocation trainerLocation);
     }
 }
