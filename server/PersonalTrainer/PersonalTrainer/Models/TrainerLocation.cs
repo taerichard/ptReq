@@ -16,5 +16,15 @@ namespace PersonalTrainer.Models
 
         public Trainer Trainer { get; set; }
         public Location Location { get; set; }
+
+        public TrainerLocation(Trainer trainer, Location location)
+        {
+            Trainer = trainer;
+            Location = location;
+        }
+
+        public TrainerLocation()
+        {
+        }
     }
 }

@@ -9,5 +9,7 @@ namespace PersonalTrainer.Repositories
     public interface ITrainerLocationRepository
     {
         ICollection<TrainerLocation> Get();
+
+        TrainerLocation CreateTrainerLocation(Trainer trainer, Location location);
     }
 }

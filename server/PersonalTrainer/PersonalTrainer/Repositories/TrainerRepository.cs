@@ -30,6 +30,12 @@ namespace PersonalTrainer.Repositories
             return trainer;
         }
 
+        public Trainer GetTrainerById(int id)
+        {
+            Trainer trainer = _trainerContext.Trainers.FirstOrDefault(t => t.Id == id);
+            return trainer;
+        }
+
         //public void DeleteById(int id)
         //{
         //    Trainer trainer = _trainerContext.Trainers.FirstOrDefault(t => t.Id == id);
@@ -38,13 +44,6 @@ namespace PersonalTrainer.Repositories
         //    {
         //        _trainerContext.Trainers.Remove(trainer);
         //    }
-        //}
-
-        //public Trainer GetTrainerById(int id)
-        //{
-        //    Trainer trainer = _trainerContext.Trainers.FirstOrDefault(t => t.Id == id);
-
-        //    return trainer;
         //}
 
         //public void Update(Trainer trainer)

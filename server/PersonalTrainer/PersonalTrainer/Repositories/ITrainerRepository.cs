@@ -14,7 +14,7 @@ namespace PersonalTrainer.Repositories
 
         IEnumerable<Trainer> GetTrainers();
 
-        //Trainer GetTrainerById(int id);
+        Trainer GetTrainerById(int id);
 
         //void Update(Trainer trainer);
     }

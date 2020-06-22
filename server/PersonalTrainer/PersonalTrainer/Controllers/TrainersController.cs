@@ -28,6 +28,19 @@ namespace PersonalTrainer.Controllers
             return Ok(trainers);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var trainer = _trainerRepository.GetTrainerById(id);
+
+            if (trainer == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(trainer);
+        }
+
         [HttpPost]
         public IActionResult Create(Trainer trainer)
         {

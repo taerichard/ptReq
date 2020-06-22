@@ -16,6 +16,18 @@ namespace PersonalTrainer.Repositories
             _trainerContext = TrainerContext;
         }
 
+        public TrainerLocation CreateTrainerLocation(Trainer trainer, Location location)
+        {
+            TrainerLocation trainerLocation = new TrainerLocation(trainer, location);
+
+            _trainerContext.Trainers.Add(trainer);
+            _trainerContext.Locations.Add(location);
+            _trainerContext.TrainerLocations.Add(trainerLocation);
+            _trainerContext.SaveChanges();
+
+            return trainerLocation;
+        }
+
         public ICollection<TrainerLocation> Get()
         {
             var trainerLocations = _trainerContext.TrainerLocations.ToList();
