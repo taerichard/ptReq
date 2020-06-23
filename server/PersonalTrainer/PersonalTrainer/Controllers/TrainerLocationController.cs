@@ -57,9 +57,11 @@ namespace PersonalTrainer.Controllers
             return Ok(trainerLocation);
         }
 
-        [HttpDelete]
-        public IActionResult Remove(TrainerLocationViewModel trainerLocationViewModel)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
+            _trainerLocationRepository.Remove(id);
+            return Ok();
         }
     }
 }
