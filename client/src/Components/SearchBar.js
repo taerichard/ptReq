@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 
-export default function SearchLink(props) {
-  const [data, setData] = useState({ trainers: [] });
+export default function SearchBar(props) {
+  const trainerList = props.trainers.map((t) => (
+    <div>
+      <li key={t.Id}>{t.FirstName}</li>
+    </div>
+  ));
 
-  useEffect(async () => {
-    const fetchData = async () => {
-      const result = await axios.get("api/trainerlocation");
-
-      setData(result.data);
-    };
-    fetchData();
-  }, []);
+  console.log("searchLink");
+  return trainerList;
 }

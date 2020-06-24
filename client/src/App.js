@@ -1,14 +1,12 @@
 import React from "react";
 import Header from "./Components/Header";
-import SearchLink from "./Components/SearchBar";
-import axios from "axios";
-
+import Search from "./Components/Search";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <SearchLink  />
+      <Search />
     </div>
   );
 }
