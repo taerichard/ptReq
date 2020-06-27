@@ -44,7 +44,7 @@ namespace PersonalTrainer
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
