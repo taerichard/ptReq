@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function Trainers() {
+function Trainers() {
   return <div>I am Trainers</div>;
 }
+
+export default Trainers;

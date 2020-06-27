@@ -2,6 +2,7 @@ import React from "react";
 //import Header from "./components/shared/Header";
 //import Search from "./components/shared/Search";
 import Nav from "./components/shared/Nav";
+import Footer from "./components/shared/Footer";
 import Trainers from "./components/pages/Trainers";
 import About from "./components/pages/Home";
 import Contact from "./components/pages/Contact";
@@ -18,6 +19,7 @@ class App extends React.Component {
             <Route path="/contact" component={Contact} />
             <Route path="/trainers" component={Trainers} />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     );
