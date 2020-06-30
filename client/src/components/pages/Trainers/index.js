@@ -2,6 +2,7 @@ import React from "react";
 import Search from "./Search";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+//import TrainerLocationMap from "./TrainerLocation/index";
 
 class Trainers extends React.Component {
   state = {
@@ -23,7 +24,10 @@ class Trainers extends React.Component {
 
   render() {
     return (
-      <div className="trainer container">
+      <div className="trainerContainer">
+        {/* <div className="map-container">
+          <TrainerLocationMap />
+        </div> */}
         <input type="search" placeholder="search trainers" />
         <Search trainers={this.state.trainers} />
         <Button
