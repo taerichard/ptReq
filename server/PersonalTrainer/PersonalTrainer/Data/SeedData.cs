@@ -1,62 +1,56 @@
-﻿//using Microsoft.EntityFrameworkCore.Internal;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using PersonalTrainer.Models;
-//using Bogus;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Bogus;
+using Microsoft.EntityFrameworkCore;
+using PersonalTrainer.Controllers;
+using PersonalTrainer.Models;
 
-//// https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-3.1
-//namespace PersonalTrainer.Data
-//{
-//    // called after database is created.
-//    public static class SeedData
-//    {
-//        public static void Initialize(TrainerContext context)
-//        {
-//            context.Database.EnsureCreated();
+namespace PersonalTrainer.Data
+{
+    public class SeedData
+    {
+        public static void SeedTrainerLocation(TrainerContext context)
+        {
+            if (!context.TrainerLocations.Any())
+            {
+                List<TrainerLocation> trainerLocationData = new List<TrainerLocation>()
+                {
+                    new TrainerLocation
+                    {
+                        Trainer = CreateTrainer("")
+                    }
+                };
+            }
+        }
 
-//            if (context.Trainers.Any())
-//            {
-//                return;
-//            }
+        public static TrainerLocation CreateTrainerLocation(Trainer trainer, Location location)
+        {
+            return new TrainerLocation
+            {
+                Location = location,
+                Trainer = trainer,
+            };
+        }
 
-//            Trainer trainer1 = CreateTrainer();
-//            Location location1 = CreateLocation();
+        public static Location GenerateLocation()
+        {
+            var location = new Faker<Location>()
+                .RuleFor(l => l.City, c => c.Address.City())
+                .RuleFor(s => s.State, c => c.Address.State());
 
-//            trainer1.Locations = location1;
+            return location;
+        }
 
-//            context.Trainers.Add(trainer1);
-//            context.SaveChanges();
-//        }
-
-//        public static Trainer CreateTrainer()
-//        {
-//            // firstName, lastName, email, Location
-//            var faker = new Faker();
-
-//            Trainer trainer = new Trainer
-//            {
-//                FirstName = faker.Name.FirstName(),
-//                LastName = faker.Name.LastName(),
-//                Email = faker.Internet.Email(),
-//                Location = CreateLocation()
-//            };
-
-//            return trainer;
-//        }
-
-//        public static Location CreateLocation()
-//        {
-//            var faker = new Faker();
-
-//            Location location = new Location
-//            {
-//                City = faker.Address.City(),
-//                State = faker.Address.State()
-//            };
-
-//            return location;
-//        }
-//    }
-//}
+        public static Trainer GenerateTrainer(string firstName, string lastName, string email)
+        {
+            return new Trainer
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email
+            };
+        }
+    }
+}
