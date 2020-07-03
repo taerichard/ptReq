@@ -49,6 +49,16 @@ namespace PersonalTrainer.Controllers
             return Ok(trainerLocationViewModel);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            TrainerLocation trainerLocation = _trainerLocationRepository.GetTrainer(id);
+
+            // display trainer info only
+
+            return Ok(trainerLocation.Trainer);
+        }
+
         [HttpGet]
         public IActionResult Get()
         {

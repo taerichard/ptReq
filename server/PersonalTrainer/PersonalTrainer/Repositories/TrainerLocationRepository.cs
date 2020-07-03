@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PersonalTrainer.Data;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace PersonalTrainer.Repositories
 {
@@ -31,6 +33,16 @@ namespace PersonalTrainer.Repositories
             var trainerLocations = _trainerContext.TrainerLocations.ToList();
 
             return trainerLocations;
+        }
+
+        public TrainerLocation GetTrainer(int id)
+        {
+            TrainerLocation trainerLocation = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Include(l => l.Location)
+                .FirstOrDefault(t => t.Id == id);
+
+            return trainerLocation;
         }
 
         public void Remove(int id)

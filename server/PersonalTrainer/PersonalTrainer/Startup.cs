@@ -45,6 +45,7 @@ namespace PersonalTrainer
 
             app.UseRouting();
 
+            // seeding data
             dataSeeder.SeedData();
 
             //app.UseAuthentication();
