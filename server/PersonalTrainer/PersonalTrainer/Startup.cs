@@ -17,15 +17,16 @@ namespace PersonalTrainer
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<DbInitializer>();
             services.AddControllers();
             services.AddTransient<ITrainerLocationRepository, TrainerLocationRepository>();
             services.AddTransient<ITrainerRepository, TrainerRepository>();
@@ -35,7 +36,7 @@ namespace PersonalTrainer
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DbInitializer dataSeeder)
         {
             if (env.IsDevelopment())
             {
@@ -43,6 +44,8 @@ namespace PersonalTrainer
             }
 
             app.UseRouting();
+
+            dataSeeder.SeedData();
 
             //app.UseAuthentication();
 
