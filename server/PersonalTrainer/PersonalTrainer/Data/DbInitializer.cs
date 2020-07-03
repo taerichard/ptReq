@@ -20,7 +20,7 @@ namespace PersonalTrainer.Data
 
         public void SeedData()
         {
-            if (_trainerContext.TrainerLocations.Any())
+            if (!_trainerContext.TrainerLocations.Any())
             {
                 List<TrainerLocation> trainerLocationList = new List<TrainerLocation>();
 

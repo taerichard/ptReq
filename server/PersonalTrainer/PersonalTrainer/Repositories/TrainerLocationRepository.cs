@@ -35,11 +35,9 @@ namespace PersonalTrainer.Repositories
             return trainerLocations;
         }
 
-        public TrainerLocation GetTrainer(int id)
+        public TrainerLocation GetTrainerLocation(int id)
         {
             TrainerLocation trainerLocation = _trainerContext.TrainerLocations
-                .Include(t => t.Trainer)
-                .Include(l => l.Location)
                 .FirstOrDefault(t => t.Id == id);
 
             return trainerLocation;
@@ -53,6 +51,15 @@ namespace PersonalTrainer.Repositories
                 _trainerContext.TrainerLocations.Remove(trainerLocation);
 
             _trainerContext.SaveChanges();
+        }
+
+        public Trainer GetTrainerInformation(TrainerLocation trainerLocation)
+        {
+            int trainerId = trainerLocation.TrainerId;
+
+            Trainer trainer = _trainerContext.Trainers.FirstOrDefault(t => t.Id == trainerId);
+
+            return trainer;
         }
     }
 }

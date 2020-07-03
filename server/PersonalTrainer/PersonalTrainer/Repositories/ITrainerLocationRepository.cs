@@ -14,6 +14,8 @@ namespace PersonalTrainer.Repositories
 
         void Remove(int id);
 
-        TrainerLocation GetTrainer(int id);
+        TrainerLocation GetTrainerLocation(int id);
+
+        Trainer GetTrainerInformation(TrainerLocation trainerLocation);
     }
 }

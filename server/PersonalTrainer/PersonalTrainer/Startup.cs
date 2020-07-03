@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using PersonalTrainer.Data;
 using PersonalTrainer.Repositories;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace PersonalTrainer
 {
@@ -27,7 +28,9 @@ namespace PersonalTrainer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<DbInitializer>();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddTransient<ITrainerLocationRepository, TrainerLocationRepository>();
             services.AddTransient<ITrainerRepository, TrainerRepository>();
 
