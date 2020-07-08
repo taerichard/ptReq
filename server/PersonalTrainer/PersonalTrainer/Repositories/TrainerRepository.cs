@@ -36,26 +36,9 @@ namespace PersonalTrainer.Repositories
             return trainer;
         }
 
-        //public void DeleteById(int id)
-        //{
-        //    Trainer trainer = _trainerContext.Trainers.FirstOrDefault(t => t.Id == id);
-
-        //    if (trainer != null)
-        //    {
-        //        _trainerContext.Trainers.Remove(trainer);
-        //    }
-        //}
-
-        //public void Update(Trainer trainer)
-        //{
-        //Trainer trainerToUpdate = _trainerContext.Trainers
-        //    .Include(t => t.Locations)
-        //    .FirstOrDefault(t => t.Id == trainer.Id);
-
-        //trainerToUpdate.FirstName = trainer.FirstName;
-        //trainerToUpdate.LastName = trainer.LastName;
-        //trainerToUpdate.Email = trainer.Email;
-        //trainerToUpdate.Locations = trainer.Locations;
-        //}
+        public ICollection<Trainer> GetTrainersByCityName(int locationId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

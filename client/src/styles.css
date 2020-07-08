@@ -2,3 +2,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.nav-color {
+  color: black;
+}
+
+h6 {
+  display: inline-block;
+}

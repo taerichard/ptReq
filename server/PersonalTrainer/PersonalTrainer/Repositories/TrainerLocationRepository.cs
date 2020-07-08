@@ -28,14 +28,7 @@ namespace PersonalTrainer.Repositories
             return trainerLocation;
         }
 
-        public ICollection<TrainerLocation> Get()
-        {
-            var trainerLocations = _trainerContext.TrainerLocations.ToList();
-
-            return trainerLocations;
-        }
-
-        public TrainerLocation GetTrainerLocation(int id)
+        public TrainerLocation GetTrainerAndLocation(int id)
         {
             TrainerLocation trainerLocation = _trainerContext.TrainerLocations
                 .FirstOrDefault(t => t.Id == id);
@@ -53,13 +46,24 @@ namespace PersonalTrainer.Repositories
             _trainerContext.SaveChanges();
         }
 
-        public Trainer GetTrainerInformation(TrainerLocation trainerLocation)
+        public IEnumerable<TrainerLocation> GetTrainersByCity(string city)
         {
-            int trainerId = trainerLocation.TrainerId;
+            var trainerLocations = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Include(l => l.Location)
+                .Where(t => t.Location.City == city).ToList();
 
-            Trainer trainer = _trainerContext.Trainers.FirstOrDefault(t => t.Id == trainerId);
+            return trainerLocations;
+        }
 
-            return trainer;
+        public IEnumerable<TrainerLocation> GetAllTrainerLocations()
+        {
+            var trainerLocations = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Include(l => l.Location)
+                .ToList();
+
+            return trainerLocations;
         }
     }
 }

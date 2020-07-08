@@ -6,12 +6,10 @@ using PersonalTrainer.Models;
 
 namespace PersonalTrainer.Repositories
 {
-    public interface ITrainerRepository
+    public interface ILocationRepository
     {
-        Trainer Add(Trainer trainer);
+        ICollection<Location> GetAllLocations();
 
-        IEnumerable<Trainer> GetTrainers();
-
-        Trainer GetTrainerById(int id);
+        Location GetLocation(int id);
     }
 }

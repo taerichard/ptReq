@@ -12,6 +12,7 @@ namespace PersonalTrainer.Data
     public class DbInitializer
     {
         private TrainerContext _trainerContext;
+        private Random random;
 
         public DbInitializer(TrainerContext trainerContext)
         {
@@ -22,25 +23,39 @@ namespace PersonalTrainer.Data
         {
             if (!_trainerContext.TrainerLocations.Any())
             {
-                List<TrainerLocation> trainerLocationList = new List<TrainerLocation>();
+                // add data to location first
+                var locationList = new List<Location>();
+                var cities = new string[] { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
 
-                for (int i = 0; i < 30; i++)
+                foreach (var city in cities)
                 {
-                    var trainer = GenerateTrainer();
-                    var location = GenerateLocation();
-                    var trainerLocation = new TrainerLocation
-                    {
-                        Trainer = trainer,
-                        Location = location
-                    };
-
-                    //context.Trainers.Add(trainer);
-                    //context.Locations.Add(location);
-                    trainerLocationList.Add(trainerLocation);
+                    locationList.Add(CreateLocationWithCity(city));
                 }
 
-                _trainerContext.TrainerLocations.AddRange(trainerLocationList);
+                _trainerContext.Locations.AddRange(locationList);
                 _trainerContext.SaveChanges();
+
+                //var trainerLocationList = new List<TrainerLocation>();
+
+                //for (int i = 0; i < 10; i++)
+                //{
+                //    var trainer = GenerateTrainer();
+                //    var location = GenerateLocation();
+
+                //    _trainerContext.Trainers.Add(trainer);
+                //    _trainerContext.Locations.Add(location);
+
+                //    var trainerLocation = new TrainerLocation
+                //    {
+                //        Trainer = trainer,
+                //        Location = location,
+                //    };
+
+                //    trainerLocationList.Add(trainerLocation);
+                //}
+
+                //_trainerContext.TrainerLocations.AddRange(trainerLocationList);
+                //_trainerContext.SaveChanges();
             }
         }
 
@@ -53,13 +68,29 @@ namespace PersonalTrainer.Data
             };
         }
 
+        public static Location CreateLocationWithCity(string city)
+        {
+            Location location = new Location
+            {
+                City = city,
+                State = "WA"
+            };
+
+            return location;
+        }
+
         public static Location GenerateLocation()
         {
-            var fakeLocation = new Faker<Location>()
-                .RuleFor(l => l.City, c => c.Address.City())
-                .RuleFor(s => s.State, c => c.Address.State());
+            Random random = new Random();
+            var cities = new string[] { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
 
-            return fakeLocation;
+            Location location = new Location
+            {
+                City = cities[random.Next(0, cities.Length)],
+                State = "WA"
+            };
+
+            return location;
         }
 
         public static Trainer GenerateTrainer()

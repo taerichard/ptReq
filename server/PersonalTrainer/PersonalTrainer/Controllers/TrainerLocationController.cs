@@ -21,7 +21,7 @@ namespace PersonalTrainer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(TrainerLocationViewModel trainerLocationViewModel)
+        public IActionResult Create(TrainerLocationViewModel trainerLocationViewModel)
         {
             TrainerLocation trainerLocation = new TrainerLocation
             {
@@ -49,21 +49,10 @@ namespace PersonalTrainer.Controllers
             return Ok(trainerLocationViewModel);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetTrainer(int id)
-        {
-            TrainerLocation trainerLocation = _trainerLocationRepository.GetTrainerLocation(id);
-
-            Trainer trainer = _trainerLocationRepository.GetTrainerInformation(trainerLocation);
-
-            return Ok(trainer);
-        }
-
         [HttpGet]
-        public IActionResult GetTrainerLocations()
+        public IActionResult GetAllTrainerLocations()
         {
-            var trainerLocation = _trainerLocationRepository.Get();
-
+            IEnumerable<TrainerLocation> trainerLocation = _trainerLocationRepository.GetAllTrainerLocations();
             return Ok(trainerLocation);
         }
 
