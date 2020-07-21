@@ -21,6 +21,8 @@ namespace PersonalTrainer.Data
 
         public void SeedData()
         {
+            random = new Random();
+
             if (!_trainerContext.TrainerLocations.Any())
             {
                 // add data to location first
@@ -33,29 +35,27 @@ namespace PersonalTrainer.Data
                 }
 
                 _trainerContext.Locations.AddRange(locationList);
+
+                var trainerLocationList = new List<TrainerLocation>();
+
+                for (int i = 0; i < 10; i++)
+                {
+                    var randomCityNumber = random.Next(0, cities.Length);
+                    var trainer = GenerateTrainer();
+
+                    _trainerContext.Trainers.Add(trainer);
+
+                    var trainerLocation = new TrainerLocation
+                    {
+                        Trainer = trainer,
+                        Location = locationList[randomCityNumber]
+                    };
+
+                    trainerLocationList.Add(trainerLocation);
+                }
+
+                _trainerContext.TrainerLocations.AddRange(trainerLocationList);
                 _trainerContext.SaveChanges();
-
-                //var trainerLocationList = new List<TrainerLocation>();
-
-                //for (int i = 0; i < 10; i++)
-                //{
-                //    var trainer = GenerateTrainer();
-                //    var location = GenerateLocation();
-
-                //    _trainerContext.Trainers.Add(trainer);
-                //    _trainerContext.Locations.Add(location);
-
-                //    var trainerLocation = new TrainerLocation
-                //    {
-                //        Trainer = trainer,
-                //        Location = location,
-                //    };
-
-                //    trainerLocationList.Add(trainerLocation);
-                //}
-
-                //_trainerContext.TrainerLocations.AddRange(trainerLocationList);
-                //_trainerContext.SaveChanges();
             }
         }
 
