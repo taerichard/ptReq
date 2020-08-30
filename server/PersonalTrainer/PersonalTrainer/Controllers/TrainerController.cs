@@ -12,24 +12,24 @@ namespace PersonalTrainer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TrainersController : ControllerBase
+    public class TrainerController : ControllerBase
     {
         private readonly ITrainerRepository _trainerRepository;
 
-        public TrainersController(ITrainerRepository trainerRepository)
+        public TrainerController(ITrainerRepository trainerRepository)
         {
             _trainerRepository = trainerRepository;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAllTrainers()
         {
             var trainers = _trainerRepository.GetTrainers();
             return Ok(trainers);
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetTrainer(int id)
         {
             var trainer = _trainerRepository.GetTrainerById(id);
 
@@ -51,6 +51,14 @@ namespace PersonalTrainer.Controllers
 
             Trainer newTrainer = _trainerRepository.Add(trainer);
             return Ok(newTrainer);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTrainer(int id)
+        {
+            _trainerRepository.DeleteTrainer(id);
+
+            return Ok();
         }
     }
 }
