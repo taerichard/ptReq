@@ -9,7 +9,7 @@ namespace PersonalTrainer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LocationsController : ControllerBase
+    public class LocationController : ControllerBase
     {
     }
 }
