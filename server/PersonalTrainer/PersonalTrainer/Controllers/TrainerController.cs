@@ -12,11 +12,11 @@ namespace PersonalTrainer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TrainersController : ControllerBase
+    public class TrainerController : ControllerBase
     {
         private readonly ITrainerRepository _trainerRepository;
 
-        public TrainersController(ITrainerRepository trainerRepository)
+        public TrainerController(ITrainerRepository trainerRepository)
         {
             _trainerRepository = trainerRepository;
         }

@@ -11,5 +11,7 @@ namespace PersonalTrainer.Repositories
         ICollection<Location> GetAllLocations();
 
         Location GetLocation(int id);
+
+        Location AddLocation(Location location);
     }
 }
