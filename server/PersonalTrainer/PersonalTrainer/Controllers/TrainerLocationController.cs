@@ -20,6 +20,19 @@ namespace PersonalTrainer.Controllers
             _trainerLocationRepository = TrainerLocationRepository;
         }
 
+        //GET api/trainerlocation/{id}
+        [HttpGet("{id}")]
+        public IActionResult Get(int trainerId)
+        {
+            var location = _trainerLocationRepository.GetTrainerLocationByTrainerId(trainerId);
+
+            if (location != null)
+            {
+                return Ok(location);
+            }
+            return NotFound();
+        }
+
         [HttpPost]
         public IActionResult Create(TrainerLocationViewModel trainerLocationViewModel)
         {
@@ -52,15 +65,25 @@ namespace PersonalTrainer.Controllers
         [HttpGet]
         public IActionResult GetAllTrainerLocations()
         {
-            IEnumerable<TrainerLocation> trainerLocation = _trainerLocationRepository.GetAllTrainerLocations();
+            IEnumerable<TrainerLocation> trainerLocation = _trainerLocationRepository
+                .GetAllTrainerLocations();
             return Ok(trainerLocation);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteTrainerLocation(int id)
-        {
-            _trainerLocationRepository.Remove(id);
-            return Ok();
-        }
+        //[HttpGet("{cityName}")]
+        //public IActionResult GetAllTrainersByCity(string cityName)
+        //{
+        //    IEnumerable<TrainerLocation> trainerLocation = _trainerLocationRepository
+        //        .GetTrainersByCity(cityName);
+
+        //    return Ok(trainerLocation);
+        //}
+
+        //[HttpDelete("{id}")]
+        //public IActionResult DeleteTrainerLocation(int id)
+        //{
+        //    _trainerLocationRepository.Remove(id);
+        //    return Ok();
+        //}
     }
 }

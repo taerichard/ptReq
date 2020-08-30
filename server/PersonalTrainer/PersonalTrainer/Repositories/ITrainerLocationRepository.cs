@@ -17,5 +17,7 @@ namespace PersonalTrainer.Repositories
         IEnumerable<TrainerLocation> GetTrainersByCity(string city);
 
         IEnumerable<TrainerLocation> GetAllTrainerLocations();
+
+        IEnumerable<TrainerLocation> GetTrainerLocationByTrainerId(int id);
     }
 }

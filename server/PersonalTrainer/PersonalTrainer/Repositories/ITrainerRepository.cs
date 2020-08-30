@@ -13,5 +13,7 @@ namespace PersonalTrainer.Repositories
         IEnumerable<Trainer> GetTrainers();
 
         Trainer GetTrainerById(int id);
+
+        Trainer DeleteTrainer(int id);
     }
 }

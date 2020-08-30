@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using PersonalTrainer.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PersonalTrainer.Repositories
 {
@@ -39,6 +40,18 @@ namespace PersonalTrainer.Repositories
         public ICollection<Trainer> GetTrainersByCityName(int locationId)
         {
             throw new NotImplementedException();
+        }
+
+        public Trainer DeleteTrainer(int id)
+        {
+            var trainer = _trainerContext.Trainers.FirstOrDefault(x => x.Id == id);
+
+            if (trainer != null)
+                _trainerContext.Trainers.Remove(trainer);
+
+            _trainerContext.SaveChanges();
+
+            return trainer;
         }
     }
 }

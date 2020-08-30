@@ -58,12 +58,18 @@ namespace PersonalTrainer.Repositories
 
         public IEnumerable<TrainerLocation> GetAllTrainerLocations()
         {
-            var trainerLocations = _trainerContext.TrainerLocations
-                .Include(t => t.Trainer)
-                .Include(l => l.Location)
-                .ToList();
+            var trainerLocations = _trainerContext.TrainerLocations;
 
             return trainerLocations;
+        }
+
+        public IEnumerable<TrainerLocation> GetTrainerLocationByTrainerId(int trainerId)
+        {
+            var trainer = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Where(t => t.TrainerId == trainerId).ToList();
+
+            return trainer;
         }
     }
 }
