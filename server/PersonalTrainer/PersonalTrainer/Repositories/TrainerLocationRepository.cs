@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PersonalTrainer.Data;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace PersonalTrainer.Repositories
 {
@@ -16,18 +18,6 @@ namespace PersonalTrainer.Repositories
             _trainerContext = TrainerContext;
         }
 
-        //public TrainerLocation CreateTrainerLocation(Trainer trainer, Location location)
-        //{
-        //    TrainerLocation trainerLocation = new TrainerLocation(trainer, location);
-
-        //    _trainerContext.Trainers.Add(trainer);
-        //    _trainerContext.Locations.Add(location);
-        //    _trainerContext.TrainerLocations.Add(trainerLocation);
-        //    _trainerContext.SaveChanges();
-
-        //    return trainerLocation;
-        //}
-
         public TrainerLocation CreateTrainerLocation(TrainerLocation trainerLocation)
         {
             _trainerContext.TrainerLocations.Add(trainerLocation);
@@ -38,11 +28,12 @@ namespace PersonalTrainer.Repositories
             return trainerLocation;
         }
 
-        public ICollection<TrainerLocation> Get()
+        public TrainerLocation GetTrainerAndLocation(int id)
         {
-            var trainerLocations = _trainerContext.TrainerLocations.ToList();
+            TrainerLocation trainerLocation = _trainerContext.TrainerLocations
+                .FirstOrDefault(t => t.Id == id);
 
-            return trainerLocations;
+            return trainerLocation;
         }
 
         public void Remove(int id)
@@ -53,6 +44,32 @@ namespace PersonalTrainer.Repositories
                 _trainerContext.TrainerLocations.Remove(trainerLocation);
 
             _trainerContext.SaveChanges();
+        }
+
+        public IEnumerable<TrainerLocation> GetTrainersByCity(string city)
+        {
+            var trainerLocations = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Include(l => l.Location)
+                .Where(t => t.Location.City == city).ToList();
+
+            return trainerLocations;
+        }
+
+        public IEnumerable<TrainerLocation> GetAllTrainerLocations()
+        {
+            var trainerLocations = _trainerContext.TrainerLocations;
+
+            return trainerLocations;
+        }
+
+        public IEnumerable<TrainerLocation> GetTrainerLocationByTrainerId(int trainerId)
+        {
+            var trainer = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Where(t => t.TrainerId == trainerId).ToList();
+
+            return trainer;
         }
     }
 }

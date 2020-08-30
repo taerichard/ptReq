@@ -12,21 +12,25 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using PersonalTrainer.Data;
 using PersonalTrainer.Repositories;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace PersonalTrainer
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddTransient<DbInitializer>();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddTransient<ITrainerLocationRepository, TrainerLocationRepository>();
             services.AddTransient<ITrainerRepository, TrainerRepository>();
 
@@ -35,7 +39,7 @@ namespace PersonalTrainer
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DbInitializer dataSeeder)
         {
             if (env.IsDevelopment())
             {
@@ -44,7 +48,10 @@ namespace PersonalTrainer
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            // seeding data
+            dataSeeder.SeedData();
+
+            //app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

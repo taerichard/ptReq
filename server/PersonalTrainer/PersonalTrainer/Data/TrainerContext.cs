@@ -28,6 +28,7 @@ namespace PersonalTrainer.Data
 
             modelBuilder.Entity<Location>().ToTable("Location")
                 .HasKey(l => l.Id);
+
             modelBuilder.Entity<Location>()
                 .Property<string>("City");
             modelBuilder.Entity<Location>()
