@@ -33,6 +33,7 @@ namespace PersonalTrainer
             );
             services.AddTransient<ITrainerLocationRepository, TrainerLocationRepository>();
             services.AddTransient<ITrainerRepository, TrainerRepository>();
+            services.AddTransient<ILocationRepository, LocationRepository>();
 
             services.AddDbContext<TrainerContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("PtDatabase")));

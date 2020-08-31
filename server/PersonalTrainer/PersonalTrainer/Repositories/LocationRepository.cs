@@ -17,20 +17,43 @@ namespace PersonalTrainer.Repositories
             _trainerContext = TrainerContext;
         }
 
-        public Location AddLocation(Location location)
+        public Location CreateLocation(Location location)
         {
-            // location must be unique
-            throw new NotImplementedException();
+            // check location already exists in db
+            var newLocation = _trainerContext.Locations.FirstOrDefault(l => l.City == location.City);
+            // null = not in db
+            if (newLocation == null)
+                _trainerContext.Locations.Add(location);
+            _trainerContext.SaveChanges();
+
+            return location;
         }
 
         public ICollection<Location> GetAllLocations()
         {
-            throw new NotImplementedException();
+            var locations = _trainerContext.Locations.ToList();
+
+            return locations;
         }
 
         public Location GetLocation(int id)
         {
-            throw new NotImplementedException();
+            var location = _trainerContext.Locations
+                .FirstOrDefault(l => l.Id == id);
+
+            return location;
+        }
+
+        public Location GetLocationByCityName(string city)
+        {
+            var location = _trainerContext.Locations.FirstOrDefault(l => l.City == city);
+
+            if (location != null)
+            {
+                return location;
+            }
+
+            return location;
         }
     }
 }

@@ -12,6 +12,8 @@ namespace PersonalTrainer.Repositories
 
         Location GetLocation(int id);
 
-        Location AddLocation(Location location);
+        Location CreateLocation(Location location);
+
+        Location GetLocationByCityName(string city);
     }
 }
