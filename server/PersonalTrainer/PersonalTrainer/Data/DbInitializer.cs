@@ -26,29 +26,28 @@ namespace PersonalTrainer.Data
             if (!_trainerContext.TrainerLocations.Any())
             {
                 // add data to location first
-                var locationList = new List<Location>();
-                var cities = new string[] { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
 
-                foreach (var city in cities)
+                var cities = new string[] { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
+                var locationList = new Location[cities.Length];
+
+                for (int i = 0; i < cities.Length; i++)
                 {
-                    locationList.Add(CreateLocationWithCity(city));
+                    locationList[i] = CreateLocationWithCity(cities[i]);
                 }
 
-                _trainerContext.Locations.AddRange(locationList);
-
+                // creating trainer location
                 var trainerLocationList = new List<TrainerLocation>();
 
                 for (int i = 0; i < 10; i++)
                 {
                     var randomCityNumber = random.Next(0, cities.Length);
-                    var trainer = GenerateTrainer();
+                    var newLocation = locationList[randomCityNumber];
 
-                    _trainerContext.Trainers.Add(trainer);
-
+                    // creating trainerlocation with trainer and location values
                     var trainerLocation = new TrainerLocation
                     {
-                        Trainer = trainer,
-                        Location = locationList[randomCityNumber]
+                        Trainer = GenerateTrainer(),
+                        Location = newLocation
                     };
 
                     trainerLocationList.Add(trainerLocation);

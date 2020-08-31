@@ -58,7 +58,9 @@ namespace PersonalTrainer.Repositories
 
         public IEnumerable<TrainerLocation> GetAllTrainerLocations()
         {
-            var trainerLocations = _trainerContext.TrainerLocations;
+            var trainerLocations = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Include(l => l.Location).ToList();
 
             return trainerLocations;
         }
