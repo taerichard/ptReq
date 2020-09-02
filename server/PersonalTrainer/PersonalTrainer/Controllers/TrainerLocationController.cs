@@ -20,20 +20,7 @@ namespace PersonalTrainer.Controllers
             _trainerLocationRepository = TrainerLocationRepository;
         }
 
-        //GET api/trainerlocation/{id}
-        [HttpGet("{id}")]
-        public IActionResult Get(int trainerId)
-        {
-            var location = _trainerLocationRepository.GetTrainerLocationByTrainerId(trainerId);
-
-            if (location != null)
-            {
-                return Ok(location);
-            }
-            return NotFound();
-        }
-
-        [HttpPost]
+        [HttpPost("register/")]
         public IActionResult Create(TrainerLocationViewModel trainerLocationViewModel)
         {
             TrainerLocation trainerLocation = new TrainerLocation
@@ -63,27 +50,31 @@ namespace PersonalTrainer.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllTrainerLocations()
+        public IActionResult GetAllTrainerLocation()
         {
             IEnumerable<TrainerLocation> trainerLocation = _trainerLocationRepository
-                .GetAllTrainerLocations();
+                .GetAllTrainerLocation();
             return Ok(trainerLocation);
         }
 
-        //[HttpGet("{cityName}")]
-        //public IActionResult GetAllTrainersByCity(string cityName)
-        //{
-        //    IEnumerable<TrainerLocation> trainerLocation = _trainerLocationRepository
-        //        .GetTrainersByCity(cityName);
+        //GET api/trainerlocation/{id}
+        [HttpGet("{trainerId:int}")]
+        public IActionResult Get(int trainerId)
+        {
+            var trainerLocation = _trainerLocationRepository.GetTrainerLocation(trainerId);
 
-        //    return Ok(trainerLocation);
-        //}
+            if (trainerLocation == null)
+            {
+                return NotFound();
+            }
+            return Ok(trainerLocation);
+        }
 
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteTrainerLocation(int id)
-        //{
-        //    _trainerLocationRepository.Remove(id);
-        //    return Ok();
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTrainerLocation(int id)
+        {
+            _trainerLocationRepository.Remove(id);
+            return Ok();
+        }
     }
 }
