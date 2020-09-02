@@ -28,7 +28,7 @@ namespace PersonalTrainer.Data
                 // creating trainer location
                 var trainerLocationList = new List<TrainerLocation>();
 
-                var cities = new List<String> { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
+                var cities = new List<string> { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
                 var state = "WA";
 
                 for (int i = 0; i < cities.Count; i++)
