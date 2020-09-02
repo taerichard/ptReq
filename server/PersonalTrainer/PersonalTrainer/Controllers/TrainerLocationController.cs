@@ -54,14 +54,15 @@ namespace PersonalTrainer.Controllers
         {
             IEnumerable<TrainerLocation> trainerLocation = _trainerLocationRepository
                 .GetAllTrainerLocation();
+
             return Ok(trainerLocation);
         }
 
         //GET api/trainerlocation/{id}
-        [HttpGet("{trainerId:int}")]
-        public IActionResult Get(int trainerId)
+        [HttpGet("{id:int}")]
+        public IActionResult Get(int id)
         {
-            var trainerLocation = _trainerLocationRepository.GetTrainerLocation(trainerId);
+            var trainerLocation = _trainerLocationRepository.GetTrainerLocation(id);
 
             if (trainerLocation == null)
             {
