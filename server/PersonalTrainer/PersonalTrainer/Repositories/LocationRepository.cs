@@ -12,6 +12,10 @@ namespace PersonalTrainer.Repositories
     {
         private readonly TrainerContext _trainerContext;
 
+        public LocationRepository()
+        {
+        }
+
         public LocationRepository(TrainerContext TrainerContext)
         {
             _trainerContext = TrainerContext;

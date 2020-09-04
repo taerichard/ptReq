@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace PersonalTrainer.Models
 {
-    public class TrainerLocationParameter
+    public class TrainerLocationServices
     {
         public Trainer Trainer { get; set; }
         public Location Location { get; set; }
+        public IEnumerable<Trainer> Trainers { get; set; }
+        public IEnumerable<Location> Locations { get; set; }
     }
 }
