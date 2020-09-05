@@ -16,9 +16,9 @@ namespace PersonalTrainer.Controllers
     {
         private readonly ITrainerLocationServices _tlServices;
 
-        public PlaygroundController(ITrainerLocationServices TrainerLocationServices)
+        public PlaygroundController(ITrainerLocationServices tlServices)
         {
-            _tlServices = TrainerLocationServices;
+            _tlServices = tlServices;
         }
 
         [HttpGet("{lastName}")]

@@ -9,20 +9,19 @@ namespace PersonalTrainer.Services
 {
     public class TrainerLocationServices : ITrainerLocationServices
     {
-        private readonly ITrainerRepository _trainerRepo;
-        private readonly ILocationRepository _locationRepo;
         private readonly ITrainerLocationRepository _tlRepo;
 
-        public TrainerLocationServices(ILocationRepository LocationRepo)
+        public TrainerLocationServices(ITrainerLocationRepository tlRepo)
         {
-            _locationRepo = LocationRepo;
+            _tlRepo = tlRepo;
         }
 
         // Locations
         public IEnumerable<Location> GetLocationByLastName(string lastName)
         {
-            var locations = _locationRepo.GetAllLocations()
-                .Where(l => l.Trainer.LastName == lastName);
+            var locations = _tlRepo.GetAllTrainerLocation()
+                .Where(l => l.Trainer.LastName == lastName)
+                .Select(l => l.Location);
 
             return locations;
         }
@@ -40,7 +39,12 @@ namespace PersonalTrainer.Services
 
         public IEnumerable<Trainer> GetTrainersByCity(string city)
         {
-            throw new NotImplementedException();
+            var trainers = _tlRepo.GetAllTrainerLocation()
+                .Where(t => t.Location.City == city)
+                .Select(t => t.Trainer)
+                .ToList();
+
+            return trainers;
         }
 
         public IEnumerable<Trainer> GetTrainersByFirstName(string firstName)

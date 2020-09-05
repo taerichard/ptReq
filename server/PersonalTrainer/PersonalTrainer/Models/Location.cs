@@ -10,7 +10,7 @@ namespace PersonalTrainer.Models
         public int Id { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public Trainer Trainer { get; set; }
+
         public ICollection<TrainerLocation> TrainerLocations { get; set; }
     }
 }

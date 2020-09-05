@@ -15,9 +15,5 @@ namespace PersonalTrainer.Repositories
         Location CreateLocation(Location location);
 
         Location GetLocationByCityName(string city);
-
-        public ILocationRepository()
-        {
-        }
     }
 }

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PersonalTrainer.Models;
 using PersonalTrainer.Repositories;
-using PersonalTrainer.ViewModels;
 
 namespace PersonalTrainer.Controllers
 {
@@ -20,33 +19,33 @@ namespace PersonalTrainer.Controllers
             _trainerLocationRepository = TrainerLocationRepository;
         }
 
-        [HttpPost("register/")]
-        public IActionResult Create(TrainerLocationViewModel trainerLocationViewModel)
+        [HttpPost]
+        public IActionResult Create(TrainerLocation tl)
         {
-            TrainerLocation trainerLocation = new TrainerLocation
+            tl = new TrainerLocation
             {
                 Location = new Location
                 {
-                    City = trainerLocationViewModel.Location.City,
-                    State = trainerLocationViewModel.Location.State
+                    City = tl.Location.City,
+                    State = tl.Location.State
                 },
 
                 Trainer = new Trainer
                 {
-                    FirstName = trainerLocationViewModel.Trainer.FirstName,
-                    LastName = trainerLocationViewModel.Trainer.LastName,
-                    Email = trainerLocationViewModel.Trainer.Email
+                    FirstName = tl.Trainer.FirstName,
+                    LastName = tl.Trainer.LastName,
+                    Email = tl.Trainer.Email
                 },
             };
 
-            if (trainerLocation == null)
+            if (tl == null)
             {
                 return BadRequest();
             }
 
-            _trainerLocationRepository.CreateTrainerLocation(trainerLocation);
+            _trainerLocationRepository.CreateTrainerLocation(tl);
 
-            return Ok(trainerLocationViewModel);
+            return Ok(tl);
         }
 
         [HttpGet]
