@@ -18,6 +18,15 @@ namespace PersonalTrainer.Repositories
             _trainerContext = TrainerContext;
         }
 
+        public IEnumerable<TrainerLocation> GetAllTrainerLocation()
+        {
+            var trainerLocations = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Include(l => l.Location).ToList();
+
+            return trainerLocations;
+        }
+
         public TrainerLocation CreateTrainerLocation(TrainerLocation trainerLocation)
         {
             _trainerContext.TrainerLocations.Add(trainerLocation);
@@ -28,10 +37,10 @@ namespace PersonalTrainer.Repositories
             return trainerLocation;
         }
 
-        public TrainerLocation GetTrainerAndLocation(int id)
+        public TrainerLocation GetTrainerLocation(int trainerLocationId)
         {
             TrainerLocation trainerLocation = _trainerContext.TrainerLocations
-                .FirstOrDefault(t => t.Id == id);
+                .FirstOrDefault(t => t.Id == trainerLocationId);
 
             return trainerLocation;
         }
@@ -44,32 +53,6 @@ namespace PersonalTrainer.Repositories
                 _trainerContext.TrainerLocations.Remove(trainerLocation);
 
             _trainerContext.SaveChanges();
-        }
-
-        public IEnumerable<TrainerLocation> GetTrainersByCity(string city)
-        {
-            var trainerLocations = _trainerContext.TrainerLocations
-                .Include(t => t.Trainer)
-                .Include(l => l.Location)
-                .Where(t => t.Location.City == city).ToList();
-
-            return trainerLocations;
-        }
-
-        public IEnumerable<TrainerLocation> GetAllTrainerLocations()
-        {
-            var trainerLocations = _trainerContext.TrainerLocations;
-
-            return trainerLocations;
-        }
-
-        public IEnumerable<TrainerLocation> GetTrainerLocationByTrainerId(int trainerId)
-        {
-            var trainer = _trainerContext.TrainerLocations
-                .Include(t => t.Trainer)
-                .Where(t => t.TrainerId == trainerId).ToList();
-
-            return trainer;
         }
     }
 }

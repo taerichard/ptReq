@@ -25,31 +25,25 @@ namespace PersonalTrainer.Data
 
             if (!_trainerContext.TrainerLocations.Any())
             {
-                // add data to location first
-                var locationList = new List<Location>();
-                var cities = new string[] { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
-
-                foreach (var city in cities)
-                {
-                    locationList.Add(CreateLocationWithCity(city));
-                }
-
-                _trainerContext.Locations.AddRange(locationList);
-
+                // creating trainer location
                 var trainerLocationList = new List<TrainerLocation>();
 
-                for (int i = 0; i < 10; i++)
+                var cities = new List<string> { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
+                var state = "WA";
+
+                for (int i = 0; i < cities.Count; i++)
                 {
-                    var randomCityNumber = random.Next(0, cities.Length);
-                    var trainer = GenerateTrainer();
+                    var randomCityPicker = random.Next(0, cities.Count);
+                    var newCity = cities[randomCityPicker];
 
-                    _trainerContext.Trainers.Add(trainer);
-
+                    // creating trainerlocation with trainer and location values
                     var trainerLocation = new TrainerLocation
                     {
-                        Trainer = trainer,
-                        Location = locationList[randomCityNumber]
+                        Trainer = GenerateTrainer(),
+                        Location = GenerateLocation(newCity, state)
                     };
+
+                    cities.RemoveAt(i);
 
                     trainerLocationList.Add(trainerLocation);
                 }
@@ -79,15 +73,12 @@ namespace PersonalTrainer.Data
             return location;
         }
 
-        public static Location GenerateLocation()
+        public static Location GenerateLocation(string city, string state)
         {
-            Random random = new Random();
-            var cities = new string[] { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
-
             Location location = new Location
             {
-                City = cities[random.Next(0, cities.Length)],
-                State = "WA"
+                City = city,
+                State = state
             };
 
             return location;

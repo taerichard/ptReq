@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using PersonalTrainer.Data;
 using PersonalTrainer.Repositories;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using PersonalTrainer.Services;
 
 namespace PersonalTrainer
 {
@@ -34,6 +35,9 @@ namespace PersonalTrainer
             services.AddTransient<ITrainerLocationRepository, TrainerLocationRepository>();
             services.AddTransient<ITrainerRepository, TrainerRepository>();
             services.AddTransient<ILocationRepository, LocationRepository>();
+
+            // playground services for tl
+            services.AddTransient<ITrainerLocationServices, TrainerLocationServices>();
 
             services.AddDbContext<TrainerContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("PtDatabase")));

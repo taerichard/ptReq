@@ -38,6 +38,16 @@ namespace PersonalTrainer.Data
                 .HasKey(tl => tl.Id);
 
             modelBuilder.Entity<TrainerLocation>()
+                .Property(t => t.TrainerId)
+                .HasColumnName("TrainerId")
+                .IsRequired();
+
+            modelBuilder.Entity<TrainerLocation>()
+                .Property(t => t.LocationId)
+                .HasColumnName("LocationId")
+                .IsRequired();
+
+            modelBuilder.Entity<TrainerLocation>()
                 .HasOne(t => t.Trainer)
                 .WithMany(t => t.TrainerLocations)
                 .HasForeignKey(t => t.TrainerId);
