@@ -8,6 +8,7 @@ using PersonalTrainer.Data;
 using PersonalTrainer.Models;
 using PersonalTrainer.Repositories;
 using PersonalTrainer.Services;
+using PersonalTrainer.ViewModels;
 
 namespace PersonalTrainer.Controllers
 {
@@ -36,7 +37,13 @@ namespace PersonalTrainer.Controllers
         {
             var trainers = _tlRepo.GetTrainersByCity(city);
 
-            return Ok(trainers);
+            var results = trainers.Select(t => new TrainerDetailViewModel
+            {
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+            });
+
+            return Ok(results);
         }
 
         //[HttpGet("{id}")]
