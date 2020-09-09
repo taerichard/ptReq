@@ -34,7 +34,11 @@ namespace PersonalTrainer.Services
         // Trainers
         public Trainer GetTrainerByEmail(string email)
         {
-            throw new NotImplementedException();
+            var trainer = _tlRepo.GetAllTrainerLocation()
+                .Select(t => t.Trainer)
+                .FirstOrDefault(t => t.Email == email);
+
+            return trainer;
         }
 
         public IEnumerable<Trainer> GetTrainersByCity(string city)
@@ -49,17 +53,38 @@ namespace PersonalTrainer.Services
 
         public IEnumerable<Trainer> GetTrainersByFirstName(string firstName)
         {
-            throw new NotImplementedException();
+            var trainers = _tlRepo.GetAllTrainerLocation()
+                .Select(t => t.Trainer)
+                .Where(t => t.FirstName == firstName)
+                .ToList();
+
+            return trainers;
         }
 
         public IEnumerable<Trainer> GetTrainersByLastName(string lastName)
         {
-            throw new NotImplementedException();
+            var trainers = _tlRepo.GetAllTrainerLocation()
+                .Select(t => t.Trainer)
+                .Where(t => t.LastName == lastName)
+                .Select(t => new Trainer
+                {
+                    FirstName = t.FirstName,
+                    LastName = t.LastName,
+                    Email = t.Email
+                })
+                .ToList();
+
+            return trainers;
         }
 
         public IEnumerable<Trainer> GetTrainersByState(string state)
         {
-            throw new NotImplementedException();
+            var trainers = _tlRepo.GetAllTrainerLocation()
+                .Where(l => l.Location.State == state)
+                .Select(t => t.Trainer)
+                .ToList();
+
+            return trainers;
         }
     }
 }

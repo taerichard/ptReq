@@ -32,7 +32,7 @@ namespace PersonalTrainer.Controllers
             return Ok(trainers);
         }
 
-        [HttpGet("{city}")]
+        [HttpGet("city/{city}")]
         public IActionResult GetTrainersByCityName(string city)
         {
             var trainers = _tlRepo.GetTrainersByCity(city);
@@ -40,24 +40,27 @@ namespace PersonalTrainer.Controllers
             var results = trainers.Select(t => new TrainerDetailViewModel
             {
                 FirstName = t.FirstName,
-                LastName = t.LastName,
+                LastName = t.LastName
             });
 
             return Ok(results);
         }
 
-        //[HttpGet("{id}")]
-        //public IActionResult GetTrainer(int id)
-        //{
-        //    var trainer = _trainerRepository.GetTrainerById(id);
+        [HttpGet("email/{email}")]
+        public IActionResult GetTrainerByEmail(string email)
+        {
+            var trainer = _tlRepo.GetTrainerByEmail(email);
 
-        //    if (trainer == null)
-        //    {
-        //        return BadRequest();
-        //    }
+            return Ok(trainer);
+        }
 
-        //    return Ok(trainer);
-        //}
+        [HttpGet("state/{state}")]
+        public IActionResult GetTrainersByState(string state)
+        {
+            var trainers = _tlRepo.GetTrainersByState(state);
+
+            return Ok(trainers);
+        }
 
         [HttpPost]
         public IActionResult Create(Trainer trainer)
