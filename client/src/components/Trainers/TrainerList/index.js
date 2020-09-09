@@ -14,11 +14,11 @@ function Search(props) {
                 <h6>Name: </h6>
                 {t.firstName + " " + t.lastName}
               </ListGroup.Item>
-              <ListGroup.Item>
+              {/* <ListGroup.Item>
                 {" "}
                 <h6>Email: </h6> {t.email}
-              </ListGroup.Item>
-              <ListGroup.Item>
+              </ListGroup.Item> */}
+              {/* <ListGroup.Item>
                 {" "}
                 <h6>City: </h6> {t.city}
               </ListGroup.Item>
@@ -26,7 +26,7 @@ function Search(props) {
                 {" "}
                 <h6>State: </h6>
                 {t.state}
-              </ListGroup.Item>
+              </ListGroup.Item> */}
             </ListGroup.Item>
           );
         })}

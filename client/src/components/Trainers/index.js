@@ -6,22 +6,25 @@ import { Button, Row } from "react-bootstrap";
 class Trainers extends React.Component {
   state = {
     trainers: [],
-    trainerLocations: [],
-    cityInput: "",
+    city: "",
+    state: "",
+    email: "",
   };
 
-  handleSearchSubmit = () => {
+  handleCitySearchSubmit = () => {
     axios
-      .get(`api/trainerlocation?city=${this.state.cityInput}`)
+      .get(`api/trainer/city/city=${this.state.city}`)
+      //.get(`api/trainer`)
       .then((result) => {
+        console.log("result", result.data);
         this.setState({ trainers: result.data });
       })
       .catch((err) => console.log(err));
   };
 
-  handleSearchChange = (e) => {
+  handleCitySearchChange = (e) => {
     this.setState({
-      cityInput: e.target.value,
+      city: e.target.value,
     });
   };
 
@@ -30,18 +33,41 @@ class Trainers extends React.Component {
       <div>
         <Row>
           <input
-            onChange={this.handleSearchChange}
-            value={this.state.cityInput}
+            onChange={this.handleCitySearchChange}
+            value={this.state.city}
             placeholder="Enter City"
           />
           <Button
-            onClick={this.handleSearchSubmit}
+            onClick={this.handleCitySearchSubmit}
             variant="outline-secondary"
             size="lg"
           >
             Search
           </Button>
         </Row>
+
+        <Row>
+          <input
+            onChange={this.handleSearchChange}
+            value={this.state.cityInput}
+            placeholder="Enter State"
+          />
+          <Button variant="outline-secondary" size="lg">
+            Search
+          </Button>
+        </Row>
+
+        <Row>
+          <input
+            onChange={this.handleSearchChange}
+            value={this.state.cityInput}
+            placeholder="Enter Email"
+          />
+          <Button variant="outline-secondary" size="lg">
+            Search
+          </Button>
+        </Row>
+
         <Row>
           <TrainerList trainers={this.state.trainers} />
         </Row>
