@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Button, Row } from "react-bootstrap";
 import TrainerList from "./TrainerList";
 import TrainerCity from "./TrainerCity";
 
@@ -41,22 +40,18 @@ class Trainers extends React.Component {
   render() {
     return (
       <div>
-        <Row>
-          <Button
-            onClick={this.searchSubmit}
-            variant="outline-secondary"
-            size="lg"
-          >
-            Show All Trainers
-          </Button>
-        </Row>
-        <Row>
-          <input onChange={this.handleCitySearchChange} />
-          <Button onClick={this.searchByCitySubmit}>
-            Get Trainers By City
-          </Button>
-          <TrainerCity city={this.state.city} />
-        </Row>
+        <button
+          onClick={this.searchSubmit}
+          variant="outline-secondary"
+          size="lg"
+        >
+          Show All Trainers
+        </button>
+
+        <input onChange={this.handleCitySearchChange} />
+        <button onClick={this.searchByCitySubmit}>Get Trainers By City</button>
+        <TrainerCity city={this.state.city} />
+
         <TrainerList trainers={this.state.trainers} />
       </div>
     );
