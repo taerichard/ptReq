@@ -6,6 +6,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Link } from "react-router-dom";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import Icon from "@material-ui/core/Icon";
+import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -31,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 100,
     marginLeft: "25px",
   },
+  icon: {
+    color: "black",
+    display: "",
+  },
 }));
 
 export default function Header() {
@@ -48,6 +54,9 @@ export default function Header() {
       <ElevationScroll>
         <AppBar>
           <ToolBar classes={{ root: classes.toolBarMargin }} disableGutters>
+            <Icon classes={{ root: classes.icon }}>
+              <FitnessCenterIcon></FitnessCenterIcon>
+            </Icon>
             <Tabs
               textColor="secondary"
               //indicatorColor="white"
