@@ -35,7 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     color: "black",
-    display: "",
+    position: "absolute",
+    left: "20px",
+    top: "20px",
   },
 }));
 
@@ -53,10 +55,10 @@ export default function Header() {
     <React.Fragment>
       <ElevationScroll>
         <AppBar>
+          <Icon classes={{ root: classes.icon }}>
+            <FitnessCenterIcon></FitnessCenterIcon>
+          </Icon>
           <ToolBar classes={{ root: classes.toolBarMargin }} disableGutters>
-            <Icon classes={{ root: classes.icon }}>
-              <FitnessCenterIcon></FitnessCenterIcon>
-            </Icon>
             <Tabs
               textColor="secondary"
               //indicatorColor="white"
