@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import theme from "./components/ui/Theme";
 import TrainerList from "./components/Trainers/TrainerList";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./Home";
 
 export default function App() {
   return (
@@ -13,7 +14,7 @@ export default function App() {
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route exact path="/" component={() => <div>Home</div>} />
+            <Route exact path="/" component={Home} />
             <Route
               exact
               path="/trainer"
