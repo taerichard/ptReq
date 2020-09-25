@@ -18,15 +18,29 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   image: {
+    marginLeft: "1em",
     width: "500px",
-    height: "640px",
+    height: "520px",
+    [theme.breakpoints.down("lg")]: {
+      width: "425px",
+      height: "445px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "300px",
+      height: "320px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "150px",
+      height: "240px",
+    },
   },
+  sidePanel: {},
 }));
 
 function Home() {
   const classes = useStyles();
   return (
-    <Grid container={true} className={classes.root}>
+    <Grid container={true} className={classes.root} justify="center">
       <Grid item className={classes.imageContainer} lg={12}>
         <Card classes={{ root: classes.imageContainer }}>
           <CardMedia
@@ -55,6 +69,8 @@ function Home() {
           />
         </Card>
       </Grid>
+
+      <Grid item className={classes.sidePanel}></Grid>
     </Grid>
   );
 }
