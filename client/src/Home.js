@@ -13,16 +13,33 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "10em",
     direction: "row",
   },
+  firstRow: {
+    padding: "70px 0",
+    backgroundColor: "#f6f6f6",
+  },
+  firstRowText: {
+    ...theme.typography.tab,
+    marginLeft: "2.5rem",
+  },
+  secondRow: {
+    padding: "100px 0",
+    backgroundColor: "#ffffff",
+  },
+  secondRowFirst: {
+    display: "inline-flex",
+    border: "2px solid black",
+    width: "1em",
+  },
   imageContainer: {
     display: "inline-block",
     textAlign: "center",
   },
   image: {
     marginLeft: "1em",
-    width: "500px",
-    height: "520px",
+    // width: "500px",
+    // height: "520px",
     [theme.breakpoints.down("lg")]: {
-      width: "425px",
+      width: "400px",
       height: "445px",
     },
     [theme.breakpoints.down("md")]: {
@@ -40,37 +57,63 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
   const classes = useStyles();
   return (
-    <Grid container={true} className={classes.root} justify="center">
-      <Grid item className={classes.imageContainer} lg={12}>
-        <Card classes={{ root: classes.imageContainer }}>
-          <CardMedia
-            classes={{ root: classes.image }}
-            image={firstImage}
-            title="high knees"
-            component="img"
-          />
-        </Card>
-
-        <Card classes={{ root: classes.imageContainer }}>
-          <CardMedia
-            classes={{ root: classes.image }}
-            image={secondImage}
-            title="plank"
-            component="img"
-          />
-        </Card>
-
-        <Card classes={{ root: classes.imageContainer }}>
-          <CardMedia
-            classes={{ root: classes.image }}
-            image={thirdImage}
-            title="situp"
-            component="img"
-          />
-        </Card>
+    <Grid direction="column">
+      <Grid item>
+        <Grid item>
+          <div className={classes.firstRow}>
+            <span className={classes.firstRowText}>About Us</span>
+          </div>
+        </Grid>
+      </Grid>
+      {/* Second Row */}
+      <Grid container="row">
+        <Grid>
+          <Grid item className={secondRowFirst}>
+            hows
+          </Grid>
+          <Grid item className={secondRowFirst}>
+            it
+          </Grid>
+          <Grid item className={secondRowFirst}>
+            higm
+          </Grid>
+        </Grid>
+      </Grid>
+      {/* image container  */}
+      <Grid container direction="row">
+        <Grid item>
+          <Card classes={{ root: classes.imageContainer }}>
+            <CardMedia
+              classes={{ root: classes.image }}
+              image={firstImage}
+              title="high knees"
+              component="img"
+            />
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card classes={{ root: classes.imageContainer }}>
+            <CardMedia
+              classes={{ root: classes.image }}
+              image={secondImage}
+              title="plank"
+              component="img"
+            />
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card classes={{ root: classes.imageContainer }}>
+            <CardMedia
+              classes={{ root: classes.image }}
+              image={thirdImage}
+              title="situp"
+              component="img"
+            />
+          </Card>
+        </Grid>
       </Grid>
 
-      <Grid item className={classes.sidePanel}></Grid>
+      {/* end of image container */}
     </Grid>
   );
 }

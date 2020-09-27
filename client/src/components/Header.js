@@ -24,20 +24,24 @@ function ElevationScroll(props) {
 }
 
 const useStyles = makeStyles((theme) => ({
+  indicator: {
+    backgroundColor: "white",
+  },
   toolBarMargin: {
     ...theme.mixins.toolbar,
     marginLeft: "auto",
+    marginBottom: "1em",
   },
   tab: {
     ...theme.typography.tab,
     minWidth: 100,
     marginLeft: "25px",
   },
-  icon: {
-    color: "black",
+  logoInitial: {
+    ...theme.typography.logoInitial,
     position: "absolute",
-    left: "20px",
-    top: "20px",
+    top: "15px",
+    left: "10px",
   },
 }));
 
@@ -55,11 +59,10 @@ export default function Header() {
     <React.Fragment>
       <ElevationScroll>
         <AppBar>
-          <Icon classes={{ root: classes.icon }}>
-            <FitnessCenterIcon></FitnessCenterIcon>
-          </Icon>
+          <div className={classes.logoInitial}>RTAE</div>
           <ToolBar classes={{ root: classes.toolBarMargin }} disableGutters>
             <Tabs
+              classes={{ indicator: classes.indicator }}
               textColor="secondary"
               //indicatorColor="white"
               onChange={handleChange}
