@@ -30,14 +30,6 @@ namespace PersonalTrainer.Controllers
             return Ok(locations);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
-        {
-            var location = _locationRepository.GetLocation(id);
-
-            return Ok(location);
-        }
-
         [HttpGet("city/{city}")]
         public IActionResult GetLocationByCity(string city)
         {

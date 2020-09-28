@@ -37,6 +37,11 @@ namespace PersonalTrainer.Controllers
         {
             var trainers = _tlRepo.GetTrainersByCity(city);
 
+            if (trainers == null)
+            {
+                return BadRequest();
+            }
+
             var results = trainers.Select(t => new TrainerDetailViewModel
             {
                 FirstName = t.FirstName,

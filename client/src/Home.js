@@ -206,6 +206,7 @@ function Home() {
           </h2>
         </Grid>
       </Grid>
+      {/* Adding Services  */}
     </Grid>
   );
 }
