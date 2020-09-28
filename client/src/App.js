@@ -1,21 +1,43 @@
 import React from "react";
 import Trainers from "./components/Trainers";
-import { Switch, Route } from "react-router-dom";
-import Header from "./Header";
-import { Container } from "react-bootstrap";
+import Header from "./components/Header";
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "./components/ui/Theme";
+import TrainerList from "./components/Trainers/TrainerList";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./Home";
 
-function App() {
+export default function App() {
   return (
     <div>
-      <Header />
-      <Container>
-        <Switch>
-          <Route exact path="/" component={Trainers} />
-          <Route path="/trainers" component={Trainers} />
-        </Switch>
-      </Container>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/trainer"
+              component={() => <div>Trainer Component</div>}
+            />
+            <Route
+              exact
+              path="/location"
+              component={() => <div>Location Component</div>}
+            />
+            <Route
+              exact
+              path="/contact"
+              component={() => <div>Contact Us Component</div>}
+            />
+            <Route
+              exact
+              path="/register"
+              component={() => <div>Sign Up Component</div>}
+            />
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
     </div>
   );
 }
-
-export default App;

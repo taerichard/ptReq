@@ -12,12 +12,8 @@ namespace PersonalTrainer.Repositories
 
         void Remove(int id);
 
-        TrainerLocation GetTrainerAndLocation(int id);
+        TrainerLocation GetTrainerLocation(int trainerLocationId);
 
-        IEnumerable<TrainerLocation> GetTrainersByCity(string city);
-
-        IEnumerable<TrainerLocation> GetAllTrainerLocations();
-
-        IEnumerable<TrainerLocation> GetTrainerLocationByTrainerId(int id);
+        IEnumerable<TrainerLocation> GetAllTrainerLocation();
     }
 }

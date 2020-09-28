@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using PersonalTrainer.Data;
 using PersonalTrainer.Models;
 using PersonalTrainer.Repositories;
+using PersonalTrainer.Services;
+using PersonalTrainer.ViewModels;
 
 namespace PersonalTrainer.Controllers
 {
@@ -15,10 +17,12 @@ namespace PersonalTrainer.Controllers
     public class TrainerController : ControllerBase
     {
         private readonly ITrainerRepository _trainerRepository;
+        private readonly ITrainerLocationServices _tlRepo;
 
-        public TrainerController(ITrainerRepository trainerRepository)
+        public TrainerController(ITrainerLocationServices TlRepo, ITrainerRepository TrainerRepo)
         {
-            _trainerRepository = trainerRepository;
+            _tlRepo = TlRepo;
+            _trainerRepository = TrainerRepo;
         }
 
         [HttpGet]
@@ -28,17 +32,39 @@ namespace PersonalTrainer.Controllers
             return Ok(trainers);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetTrainer(int id)
+        [HttpGet("city/{city}")]
+        public IActionResult GetTrainersByCityName(string city)
         {
-            var trainer = _trainerRepository.GetTrainerById(id);
+            var trainers = _tlRepo.GetTrainersByCity(city);
 
-            if (trainer == null)
+            if (trainers == null)
             {
                 return BadRequest();
             }
 
+            var results = trainers.Select(t => new TrainerDetailViewModel
+            {
+                FirstName = t.FirstName,
+                LastName = t.LastName
+            });
+
+            return Ok(results);
+        }
+
+        [HttpGet("email/{email}")]
+        public IActionResult GetTrainerByEmail(string email)
+        {
+            var trainer = _tlRepo.GetTrainerByEmail(email);
+
             return Ok(trainer);
+        }
+
+        [HttpGet("state/{state}")]
+        public IActionResult GetTrainersByState(string state)
+        {
+            var trainers = _tlRepo.GetTrainersByState(state);
+
+            return Ok(trainers);
         }
 
         [HttpPost]
@@ -53,12 +79,12 @@ namespace PersonalTrainer.Controllers
             return Ok(newTrainer);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteTrainer(int id)
-        {
-            _trainerRepository.DeleteTrainer(id);
+        //[HttpDelete("{id}")]
+        //public IActionResult DeleteTrainer(int id)
+        //{
+        //    _trainerRepository.DeleteTrainer(id);
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
     }
 }
