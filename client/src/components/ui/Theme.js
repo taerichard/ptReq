@@ -18,14 +18,11 @@ export default createMuiTheme({
     },
   },
   typography: {
+    general: {
+      fontFamily: "Dosis",
+      textTransform: "none",
+    },
     tab: {
-      // color: black,
-      // //fontFamily: "Raleway",
-      // fontFamily: "Roboto",
-      // variant: "h1",
-      // textShadow: "none",
-      // //fontWeight: 800,
-      // fontSize: "1rem",
       fontFamily: `Dosis`,
       textTransform: "uppercase",
       fontSize: "12px",
