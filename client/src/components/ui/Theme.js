@@ -18,9 +18,41 @@ export default createMuiTheme({
     },
   },
   typography: {
+    firstRow: {
+      first: {
+        fontFamily: "Dosis",
+        textTransform: "none",
+        color: "#232332",
+        fontSize: "40px",
+        fontWeight: "700",
+        letterSpacing: "normal",
+        lineHeight: "48px",
+      },
+      second: {
+        color: "#7e7e7e",
+        fontFamily: "Dosis",
+        fontSize: "14px",
+        fontStyle: "normal",
+        fontWeight: "400",
+        lineHeight: "24px",
+      },
+    },
+    servicesCard: {
+      fontFamily: "Dosis",
+      fontSize: "17px",
+      fontStyle: "normal",
+      fontWeight: "400",
+      height: "18px",
+      letterSpacing: "1px",
+      lineHeight: "18.7px",
+    },
     general: {
       fontFamily: "Dosis",
       textTransform: "none",
+      color: "#232332",
+      fontSize: "14px",
+      fontStyle: "normal",
+      lineHeight: "24px",
     },
     tab: {
       fontFamily: `Dosis`,
