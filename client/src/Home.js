@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   aboutUsRow: {
@@ -17,15 +18,14 @@ const useStyles = makeStyles((theme) => ({
   },
   firstContainer: {
     marginTop: "8em",
+    flexGrow: "1",
   },
 
   firstRowText: {
     ...theme.typography.tab,
     marginLeft: "20em",
   },
-  secondRowtextBlock: {
-    paddingRight: "0",
-  },
+  paper: {},
   secondRowFontStyle: {
     ...theme.typography.firstRow.first,
   },
@@ -35,22 +35,43 @@ const useStyles = makeStyles((theme) => ({
   serviceCard: {
     ...theme.typography.servicesCard,
   },
+
   imageContainer: {
     marginTop: "8em",
+    flexGrow: "1",
   },
   image: {
-    width: "300px",
-    height: "320px",
+    width: "30em",
+    height: "30em",
+    [theme.breakpoints.up("lg")]: {
+      width: "32em",
+      height: "32em",
+      padding: "2em",
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      width: "18em",
+      height: "18em",
+      display: "block",
+    },
   },
 
   imageCard: {
     display: "inline-block",
+  },
+  dedicateContainer: {
+    marginTop: "7em",
+    ...theme.typography.firstRow.first,
+  },
+  servicesContainer: {
+    marginTop: "5em",
   },
   fourthRowTitle: {
     ...theme.typography.tab,
   },
   fourthRowText: {
     ...theme.typography.general,
+    marginTop: "1em",
   },
   fifthContainer: {
     marginTop: "5rem",
@@ -59,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
   const classes = useStyles();
+  //const [spacing, setSpacing] = React.useState(2);
   return (
     <Grid container direction="column">
       <Grid container direction="column">
@@ -70,20 +92,21 @@ function Home() {
             {/* Second Row Find your Trainer */}
             <Grid
               container
+              classes={{ root: classes.firstContainer }}
               direction="row"
-              align="center"
-              spacing={8}
-              className={classes.firstContainer}
+              spacing={6}
+              justify="center"
+              wrap="nowrap"
             >
-              <Grid item lg={4} classes={{ root: classes.secondRowtextBlock }}>
-                <div className={classes.findTrainerRow}>
+              <Grid item lg={3}>
+                <Paper classes={{ root: classes.paper }}>
                   <h1 className={classes.secondRowFontStyle}>
                     Find Your Trainer
                   </h1>
-                </div>
+                </Paper>
               </Grid>
-              <Grid item lg={4} classes={{ root: classes.secondRowtextBlock }}>
-                <div className={classes.findTrainerRow}>
+              <Grid item lg={3}>
+                <Paper classes={{ root: classes.paper }}>
                   <p className={classes.secondRowSecondText}>
                     Many desktop publishing packages and web page <br />
                     editors now use Lorem Ipsum as their default model text,
@@ -94,15 +117,10 @@ function Home() {
                     evolved over the years, sometimes by accident, <br />
                     sometimes on purpose (injected humour and the like).
                   </p>
-                </div>
+                </Paper>
               </Grid>
-              <Grid
-                item
-                item
-                lg={4}
-                classes={{ root: classes.secondRowtextBlock }}
-              >
-                <div className={classes.findTrainerRow}>
+              <Grid item lg={3}>
+                <Paper classes={{ root: classes.paper }}>
                   <p className={classes.secondRowSecondText}>
                     {" "}
                     Many desktop publishing packages and web page <br />
@@ -114,7 +132,7 @@ function Home() {
                     evolved over the years, sometimes by accident, <br />
                     sometimes on purpose (injected humour and the like).
                   </p>
-                </div>
+                </Paper>
               </Grid>
             </Grid>
           </Grid>
@@ -124,10 +142,10 @@ function Home() {
             classes={{ root: classes.imageContainer }}
             container
             direction="row"
+            justify="center"
             wrap="nowrap"
-            align="center"
           >
-            <Grid item lg={4}>
+            <Grid item lg={3}>
               <Card classes={{ root: classes.imageCard }}>
                 <CardMedia
                   classes={{ root: classes.image }}
@@ -137,7 +155,7 @@ function Home() {
                 />
               </Card>
             </Grid>
-            <Grid item lg={4}>
+            <Grid item lg={3}>
               <Card classes={{ root: classes.imageCard }}>
                 <CardMedia
                   classes={{ root: classes.image }}
@@ -147,7 +165,7 @@ function Home() {
                 />
               </Card>
             </Grid>
-            <Grid item lg={4}>
+            <Grid item lg={3}>
               <Card classes={{ root: classes.imageCard }}>
                 <CardMedia
                   classes={{ root: classes.image }}
@@ -161,7 +179,12 @@ function Home() {
         </Grid>
 
         {/* end of image container */}
-        <Grid container direction="column" align="center">
+        <Grid
+          container
+          direction="column"
+          align="center"
+          classes={{ root: classes.dedicateContainer }}
+        >
           <Grid item lg={12}>
             <div>
               <h2 className={classes.secondRowFontStyle}>Dedicate Yourself</h2>
@@ -174,10 +197,14 @@ function Home() {
           </Grid>
 
           {/* End of Dedicate Yourself Row */}
-          <Grid container direction="column">
+          <Grid
+            container
+            direction="column"
+            classes={{ root: classes.servicesContainer }}
+          >
             <Grid container direction="row" justify="center">
               <Grid item lg={12}>
-                <h2>Our Services</h2>
+                <h2 style={{ marginBottom: "1em" }}>Our Services</h2>
               </Grid>
               <Grid item lg={4}>
                 <Card>
