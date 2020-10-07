@@ -15,11 +15,7 @@ export default function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route
-              exact
-              path="/trainer"
-              component={() => <div>Trainer Component</div>}
-            />
+            <Route exact path="/trainer" component={Trainers} />
             <Route
               exact
               path="/location"

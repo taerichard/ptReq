@@ -1,7 +1,6 @@
 //www.youtube.com/watch?v=Pf7g32CwX_s
 import React from "react";
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
-import "../styles.css";
 
 function Map() {
   return (

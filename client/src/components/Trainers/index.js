@@ -1,7 +1,9 @@
 import React from "react";
+import TrainerForm from "./TrainerForm";
 import axios from "axios";
 import TrainerList from "./TrainerList";
 import TrainerCity from "./TrainerCity";
+import Grid from "@material-ui/core/Grid";
 
 class Trainers extends React.Component {
   state = {
@@ -39,21 +41,12 @@ class Trainers extends React.Component {
 
   render() {
     return (
-      <div>
-        <button
-          onClick={this.searchSubmit}
-          variant="outline-secondary"
-          size="lg"
-        >
-          Show All Trainers
-        </button>
-
-        <input onChange={this.handleCitySearchChange} />
-        <button onClick={this.searchByCitySubmit}>Get Trainers By City</button>
-        <TrainerCity city={this.state.city} />
-
-        <TrainerList trainers={this.state.trainers} />
-      </div>
+      <Grid container direction="column" alignContent="center">
+        <Grid item>
+          <TrainerForm />
+        </Grid>
+        <Grid item>Data displayed here</Grid>
+      </Grid>
     );
   }
 }
