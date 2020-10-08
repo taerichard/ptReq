@@ -9,6 +9,8 @@ namespace PersonalTrainer.Services
     public interface ITrainerLocationServices
     {
         // Trainers
+        IEnumerable<Trainer> GetTrainersByGender(Gender gender);
+
         IEnumerable<Trainer> GetTrainersByFirstName(string firstName);
 
         Trainer GetTrainerByEmail(string email);

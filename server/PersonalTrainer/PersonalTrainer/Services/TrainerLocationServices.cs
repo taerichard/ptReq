@@ -32,6 +32,16 @@ namespace PersonalTrainer.Services
         }
 
         // Trainers
+        public IEnumerable<Trainer> GetTrainersByGender(Gender gender)
+        {
+            var trainers = _tlRepo.GetAllTrainerLocation()
+                .Select(t => t.Trainer)
+                .Where(t => t.Gender == gender)
+                .ToList();
+
+            return trainers;
+        }
+
         public Trainer GetTrainerByEmail(string email)
         {
             var trainer = _tlRepo.GetAllTrainerLocation()

@@ -67,6 +67,14 @@ namespace PersonalTrainer.Controllers
             return Ok(trainers);
         }
 
+        [HttpGet("gender/{gender}")]
+        public IActionResult GetTrainersByGender(Gender gender)
+        {
+            var trainers = _tlRepo.GetTrainersByGender(gender);
+
+            return Ok(trainers);
+        }
+
         [HttpPost]
         public IActionResult Create(Trainer trainer)
         {
