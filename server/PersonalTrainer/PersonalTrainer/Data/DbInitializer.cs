@@ -11,46 +11,34 @@ namespace PersonalTrainer.Data
 {
     public class DbInitializer
     {
-        private TrainerContext _trainerContext;
-        private Random random;
+        private readonly TrainerContext _trainerContext;
 
         public DbInitializer(TrainerContext trainerContext)
         {
             _trainerContext = trainerContext;
         }
 
+        private Random random;
+
         public void SeedData()
         {
+            // cities cannot be repeated
+
             random = new Random();
+            var cities = new List<string> { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
+            var state = "WA";
 
-            if (!_trainerContext.TrainerLocations.Any())
+            for (int i = 0; i < 20; i++)
             {
-                // creating trainer location
-                var trainerLocationList = new List<TrainerLocation>();
-
-                var cities = new List<string> { "Kenmore", "Bothell", "Kirkland", "Woodinville", "Seattle", "Redmond", "Bellevue", "Monroe" };
-                var state = "WA";
-
-                for (int i = 0; i < cities.Count; i++)
-                {
-                    var randomCityPicker = random.Next(0, cities.Count);
-                    var newCity = cities[randomCityPicker];
-
-                    // creating trainerlocation with trainer and location values
-                    var trainerLocation = new TrainerLocation
-                    {
-                        Trainer = GenerateTrainer(),
-                        Location = GenerateLocation(newCity, state)
-                    };
-
-                    cities.RemoveAt(i);
-
-                    trainerLocationList.Add(trainerLocation);
-                }
-
-                _trainerContext.TrainerLocations.AddRange(trainerLocationList);
-                _trainerContext.SaveChanges();
+                var randomIndex = random.Next(0, cities.Count);
+                var randomCity = cities[randomIndex];
+                Location location = GenerateLocation(cities[randomIndex], state);
+                Trainer trainer = GenerateTrainer();
+                TrainerLocation tl = new TrainerLocation(trainer, location);
+                _trainerContext.TrainerLocations.Add(tl);
             }
+
+            _trainerContext.SaveChanges();
         }
 
         public static TrainerLocation CreateTrainerLocation(Trainer trainer, Location location)
@@ -89,6 +77,7 @@ namespace PersonalTrainer.Data
             var fakeTrainer = new Faker<Trainer>()
                  .RuleFor(f => f.FirstName, c => c.Name.FirstName())
                  .RuleFor(l => l.LastName, c => c.Name.LastName())
+                 .RuleFor(g => g.Gender, c => c.PickRandom<Gender>())
                  .RuleFor(e => e.Email, (f, v) => f.Internet.Email(v.FirstName, v.LastName));
 
             return fakeTrainer;

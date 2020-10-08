@@ -16,17 +16,23 @@ namespace PersonalTrainer.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Trainer>().ToTable("Trainer")
+            modelBuilder.Entity<Trainer>().ToTable("Trainers")
                 .HasKey(t => t.Id);
 
             modelBuilder.Entity<Trainer>()
                 .Property<string>("FirstName");
+
             modelBuilder.Entity<Trainer>()
                 .Property<string>("LastName");
+
             modelBuilder.Entity<Trainer>()
                 .Property<string>("Email");
 
-            modelBuilder.Entity<Location>().ToTable("Location")
+            modelBuilder.Entity<Trainer>()
+                .Property<Gender>("Gender")
+                .HasConversion<string>();
+
+            modelBuilder.Entity<Location>().ToTable("Locations")
                 .HasKey(l => l.Id);
 
             modelBuilder.Entity<Location>()
@@ -34,7 +40,7 @@ namespace PersonalTrainer.Data
             modelBuilder.Entity<Location>()
                 .Property<string>("State");
 
-            modelBuilder.Entity<TrainerLocation>().ToTable("TrainerLocation")
+            modelBuilder.Entity<TrainerLocation>().ToTable("TrainerLocations")
                 .HasKey(tl => tl.Id);
 
             modelBuilder.Entity<TrainerLocation>()
