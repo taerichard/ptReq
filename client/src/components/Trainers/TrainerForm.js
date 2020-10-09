@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -41,12 +41,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function TrainerForm() {
   const classes = useStyles();
-  const [currency, setCurrency] = React.useState("EUR");
+  const [genderValue, setGenderValue] = useState("");
+  const [cityValue, setCityValue] = useState("");
 
-  const handleChange = (event) => {
-    setCurrency(event.target.value);
+  const handleGenderChange = (e) => {
+    setGenderValue(e.target.value);
+  };
+
+  const handleCityChange = (e) => {
+    setCityValue(e.target.value);
   };
 
   return (
@@ -56,8 +63,8 @@ export default function TrainerForm() {
           id="standard-select-currency"
           select
           label="Gender"
-          value={currency}
-          onChange={handleChange}
+          value={genderValue}
+          onChange={handleGenderChange}
           helperText="Please Select Trainer Gender"
         >
           {genders.map((option) => (
@@ -67,20 +74,19 @@ export default function TrainerForm() {
           ))}
         </TextField>
       </div>
-
       <div>
         <TextField
-          id="standard-select-currency-native"
+          id="standard-select-currency"
           select
           label="City"
-          value={currency}
-          onChange={handleChange}
+          value={cityValue}
+          onChange={handleCityChange}
           helperText="Please Select City Name"
         >
           {cities.map((option) => (
-            <option key={option.value} value={option.value}>
+            <MenuItem key={option.value} value={option.value}>
               {option.label}
-            </option>
+            </MenuItem>
           ))}
         </TextField>
       </div>
