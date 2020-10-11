@@ -11,6 +11,17 @@ class Trainers extends React.Component {
     city: [],
   };
 
+  onTrainerSubmit = async (data) => {
+    console.log("coming form index", data);
+    try {
+      const response = await axios.get(`api/trainer/gender/${data[0]}`);
+      console.log(response);
+      this.setState({ trainers: response.data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   searchSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -43,7 +54,7 @@ class Trainers extends React.Component {
     return (
       <Grid container direction="column" alignContent="center">
         <Grid item>
-          <TrainerForm />
+          <TrainerForm onSubmit={this.onTrainerSubmit} />
         </Grid>
         <Grid item>Data displayed here</Grid>
       </Grid>

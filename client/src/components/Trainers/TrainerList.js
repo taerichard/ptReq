@@ -1,20 +1,32 @@
 import React from "react";
-//import { ListGroup } from "react-bootstrap";
-import "../../styles.css";
+import { makeStyles } from "@material-ui/core/styles";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import ListSubheader from "@material-ui/core/ListSubheader";
 
-function TrainerList(props) {
-  console.log("props", props);
-  const trainers = props.trainers.map((trainer, i) => {
-    return (
-      <div>
-        <h2>FirstName: {trainer.firstName}</h2>
-        <h2>Last Name: {trainer.lastName}</h2>
-        <h2>Email:{trainer.email}</h2>
-      </div>
-    );
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+  },
+  icon: {
+    color: "rgba(255, 255, 255, 0.54)",
+  },
+}));
+
+export default function TrainerList(props) {
+  const classes = useStyles();
+  console.log("coming from trainerlist", props);
+  const trainers = props.map((t, i) => {
+    <div key={i}>{t}</div>;
   });
-
   return <div>{trainers}</div>;
 }
-
-export default TrainerList;
