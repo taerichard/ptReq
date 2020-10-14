@@ -74,6 +74,7 @@ export default function TrainerForm(props) {
     setCityValue(e.target.value);
   };
 
+
   const getTrainers = async (gender) => {
     try {
       const response = await axios.get(`api/trainer/gender/${gender}`);

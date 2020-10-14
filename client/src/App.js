@@ -6,6 +6,7 @@ import theme from "./components/ui/Theme";
 import TrainerList from "./components/Trainers/TrainerList";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
+import Locations from "./components/Locations/index";
 
 export default function App() {
   return (
@@ -16,11 +17,7 @@ export default function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/trainer" component={Trainers} />
-            <Route
-              exact
-              path="/location"
-              component={() => <div>Location Component</div>}
-            />
+            <Route exact path="/location" component={Locations} />
             <Route
               exact
               path="/contact"

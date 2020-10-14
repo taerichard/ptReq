@@ -24,9 +24,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TrainerList(props) {
   const classes = useStyles();
-  console.log("coming from trainerlist", props);
-  const trainers = props.map((t, i) => {
-    <div key={i}>{t}</div>;
-  });
-  return <div>{trainers}</div>;
+  console.log("coming from trainerlist", props.trainers);
+
+  return (
+    <div className={classes.root}>
+      <GridList cellHeight={180} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={2} style={{ height: "auto" }}>
+          <ListSubheader component="div">Trainers</ListSubheader>
+        </GridListTile>
+        {props.trainers.map((t) => (
+          <GridListTile key={t.id}>
+            <GridListTileBar
+              title="Trainer"
+              subtitle={<span>{t.firstName + " " + t.lastName}</span>}
+            />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
+  );
 }
