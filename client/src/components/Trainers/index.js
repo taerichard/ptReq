@@ -2,6 +2,20 @@ import React from "react";
 import axios from "axios";
 import TrainerList from "./TrainerList";
 import TrainerCity from "./TrainerCity";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    paddingTop: "10em",
+    direction: "row",
+  },
+  firstRowText: {
+    ...theme.typography.tab,
+    marginLeft: "16em",
+  }
+}))
 
 class Trainers extends React.Component {
   state = {
@@ -38,8 +52,18 @@ class Trainers extends React.Component {
   };
 
   render() {
+    //const classes = useStyles();
     return (
       <div>
+        {/* <Grid container direction="column">
+      <Grid container direction="column" justify="center">
+        <Grid item className={classes.firstRow}>
+          <Grid item>
+            <span className={classes.firstRowText}>About Us</span>
+          </Grid>
+        </Grid>
+      </Grid>
+      </Grid> */}
         <button
           onClick={this.searchSubmit}
           variant="outline-secondary"
@@ -54,7 +78,7 @@ class Trainers extends React.Component {
 
         <TrainerList trainers={this.state.trainers} />
       </div>
-    );
+    )
   }
 }
 

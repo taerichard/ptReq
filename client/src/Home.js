@@ -1,8 +1,8 @@
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
-import firstImage from "./images/knees.jpg";
-import secondImage from "./images/plank.jpg";
-import thirdImage from "./images/situp.jpg";
+import firstImage from "./images/rainbow.jpg";
+import secondImage from "./images/running.jpg";
+import thirdImage from "./images/dance.jpg";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   fourthRowContainer: {
-    marginTop: "5rem",
+    marginTop: "15rem",
     textAlign: "center",
   },
   fourthRowTitle: {
@@ -129,7 +129,7 @@ function Home() {
         </Grid>
       </Grid>
       {/* image container  */}
-      <Grid
+      {/* <Grid
         classes={{ root: classes.thirdContainer }}
         container
         direction="row"
@@ -166,7 +166,7 @@ function Home() {
             />
           </Card>
         </Grid>
-      </Grid>
+      </Grid> */}
       {/* end of image container */}
       <Grid
         container

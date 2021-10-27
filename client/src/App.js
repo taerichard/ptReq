@@ -1,9 +1,8 @@
 import React from "react";
-import Trainers from "./components/Trainers";
+import Trainers from "./components/Trainers/index";
 import Header from "./components/Header";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./components/ui/Theme";
-import TrainerList from "./components/Trainers/TrainerList";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 
@@ -14,12 +13,13 @@ export default function App() {
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={() => <div>{Home}</div>} />
             <Route
               exact
               path="/trainer"
-              component={() => <div>Trainer Component</div>}
-            />
+              component={Trainers}
+             />
+            
             <Route
               exact
               path="/location"
