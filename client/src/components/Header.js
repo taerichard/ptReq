@@ -6,8 +6,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Link } from "react-router-dom";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Icon from "@material-ui/core/Icon";
-import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
+import Grid from "@material-ui/core/Grid";
+
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -43,9 +43,17 @@ const useStyles = makeStyles((theme) => ({
     top: "15px",
     left: "10px",
   },
+  title: {
+    padding: "70px 0",
+    backgroundColor: "#f6f6f6",
+  },
+  titleText: {
+    ...theme.typography.tab,
+    marginLeft: "16em",
+  },
 }));
 
-export default function Header() {
+ function Header() {
   const classes = useStyles();
 
   const [value, setValue] = useState(0);
@@ -56,6 +64,7 @@ export default function Header() {
   };
 
   return (
+    <Grid container direction="column">
     <React.Fragment>
       <ElevationScroll>
         <AppBar>
@@ -104,5 +113,17 @@ export default function Header() {
       </ElevationScroll>
       <div className={classes.toolBarMargin} />
     </React.Fragment>
+    
+      <Grid container direction="column" justify="center">
+        <Grid item className={classes.title}>
+          <Grid item>
+            <span className={classes.titleText}>About Us</span>
+          </Grid>
+        </Grid>
+      </Grid>
+
+    </Grid>
   );
 }
+
+export default Header;

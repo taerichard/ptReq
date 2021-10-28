@@ -6,14 +6,17 @@ import theme from "./components/ui/Theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 
-export default function App() {
+ function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route exact path="/" render={() => <div>{Home}</div>} />
+            <Route 
+            exact path="/" 
+            component={Home} />
+
             <Route
               exact
               path="/trainer"
@@ -41,3 +44,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App; 
