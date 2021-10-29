@@ -35,6 +35,7 @@ export default createMuiTheme({
       color: "#232332",
     },
     logoInitial: {
+      color: 'black',
       fontFamily: `Dosis`,
       textTransform: "uppercase",
       fontSize: "18px",
@@ -42,6 +43,7 @@ export default createMuiTheme({
       lineHeight: "20px",
       letterSpacing: "6px",
       color: "#232332",
+      
     },
   },
 });

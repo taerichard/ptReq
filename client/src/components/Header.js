@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     <Grid container direction="column">
     <React.Fragment>
       <ElevationScroll>
-        <AppBar>
+        <AppBar className={classes.indicator}>
           <div className={classes.logoInitial}>RTAE</div>
           <ToolBar classes={{ root: classes.toolBarMargin }} disableGutters>
             <Tabs
@@ -89,12 +89,7 @@ const useStyles = makeStyles((theme) => ({
                 to="/trainer"
                 component={Link}
               />
-              <Tab
-                className={classes.tab}
-                label="Locations"
-                to="/location"
-                component={Link}
-              />
+            
               <Tab
                 className={classes.tab}
                 label="Contact Us"
@@ -113,12 +108,9 @@ const useStyles = makeStyles((theme) => ({
       </ElevationScroll>
       <div className={classes.toolBarMargin} />
     </React.Fragment>
-    
       <Grid container direction="column" justify="center">
         <Grid item className={classes.title}>
-          <Grid item>
-            <span className={classes.titleText}>About Us</span>
-          </Grid>
+     
         </Grid>
       </Grid>
 
