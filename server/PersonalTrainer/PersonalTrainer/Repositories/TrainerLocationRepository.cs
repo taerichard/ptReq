@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PersonalTrainer.Data;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace PersonalTrainer.Repositories
 {
@@ -16,17 +18,14 @@ namespace PersonalTrainer.Repositories
             _trainerContext = TrainerContext;
         }
 
-        //public TrainerLocation CreateTrainerLocation(Trainer trainer, Location location)
-        //{
-        //    TrainerLocation trainerLocation = new TrainerLocation(trainer, location);
+        public IEnumerable<TrainerLocation> GetAllTrainerLocation()
+        {
+            var trainerLocations = _trainerContext.TrainerLocations
+                .Include(t => t.Trainer)
+                .Include(l => l.Location).ToList();
 
-        //    _trainerContext.Trainers.Add(trainer);
-        //    _trainerContext.Locations.Add(location);
-        //    _trainerContext.TrainerLocations.Add(trainerLocation);
-        //    _trainerContext.SaveChanges();
-
-        //    return trainerLocation;
-        //}
+            return trainerLocations;
+        }
 
         public TrainerLocation CreateTrainerLocation(TrainerLocation trainerLocation)
         {
@@ -38,11 +37,12 @@ namespace PersonalTrainer.Repositories
             return trainerLocation;
         }
 
-        public ICollection<TrainerLocation> Get()
+        public TrainerLocation GetTrainerLocation(int trainerLocationId)
         {
-            var trainerLocations = _trainerContext.TrainerLocations.ToList();
+            TrainerLocation trainerLocation = _trainerContext.TrainerLocations
+                .FirstOrDefault(t => t.Id == trainerLocationId);
 
-            return trainerLocations;
+            return trainerLocation;
         }
 
         public void Remove(int id)

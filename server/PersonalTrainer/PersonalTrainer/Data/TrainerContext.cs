@@ -28,6 +28,7 @@ namespace PersonalTrainer.Data
 
             modelBuilder.Entity<Location>().ToTable("Location")
                 .HasKey(l => l.Id);
+
             modelBuilder.Entity<Location>()
                 .Property<string>("City");
             modelBuilder.Entity<Location>()
@@ -35,6 +36,16 @@ namespace PersonalTrainer.Data
 
             modelBuilder.Entity<TrainerLocation>().ToTable("TrainerLocation")
                 .HasKey(tl => tl.Id);
+
+            modelBuilder.Entity<TrainerLocation>()
+                .Property(t => t.TrainerId)
+                .HasColumnName("TrainerId")
+                .IsRequired();
+
+            modelBuilder.Entity<TrainerLocation>()
+                .Property(t => t.LocationId)
+                .HasColumnName("LocationId")
+                .IsRequired();
 
             modelBuilder.Entity<TrainerLocation>()
                 .HasOne(t => t.Trainer)

@@ -10,12 +10,10 @@ namespace PersonalTrainer.Repositories
     {
         Trainer Add(Trainer trainer);
 
-        //void DeleteById(int id);
-
         IEnumerable<Trainer> GetTrainers();
 
         Trainer GetTrainerById(int id);
 
-        //void Update(Trainer trainer);
+        Trainer DeleteTrainer(int id);
     }
 }

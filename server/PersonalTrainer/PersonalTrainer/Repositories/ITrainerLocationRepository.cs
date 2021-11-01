@@ -8,11 +8,12 @@ namespace PersonalTrainer.Repositories
 {
     public interface ITrainerLocationRepository
     {
-        ICollection<TrainerLocation> Get();
-
-        //TrainerLocation CreateTrainerLocation(Trainer trainer, Location location);
         TrainerLocation CreateTrainerLocation(TrainerLocation trainerLocation);
 
         void Remove(int id);
+
+        TrainerLocation GetTrainerLocation(int trainerLocationId);
+
+        IEnumerable<TrainerLocation> GetAllTrainerLocation();
     }
 }

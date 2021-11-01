@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PersonalTrainer.Models;
 using PersonalTrainer.Repositories;
-using PersonalTrainer.ViewModels;
 
 namespace PersonalTrainer.Controllers
 {
@@ -21,44 +20,58 @@ namespace PersonalTrainer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(TrainerLocationViewModel trainerLocationViewModel)
+        public IActionResult Create(TrainerLocation tl)
         {
-            TrainerLocation trainerLocation = new TrainerLocation
+            tl = new TrainerLocation
             {
                 Location = new Location
                 {
-                    City = trainerLocationViewModel.Location.City,
-                    State = trainerLocationViewModel.Location.State
+                    City = tl.Location.City,
+                    State = tl.Location.State
                 },
 
                 Trainer = new Trainer
                 {
-                    FirstName = trainerLocationViewModel.Trainer.FirstName,
-                    LastName = trainerLocationViewModel.Trainer.LastName,
-                    Email = trainerLocationViewModel.Trainer.Email
+                    FirstName = tl.Trainer.FirstName,
+                    LastName = tl.Trainer.LastName,
+                    Email = tl.Trainer.Email
                 },
             };
 
-            if (trainerLocation == null)
+            if (tl == null)
             {
                 return BadRequest();
             }
 
-            _trainerLocationRepository.CreateTrainerLocation(trainerLocation);
+            _trainerLocationRepository.CreateTrainerLocation(tl);
 
-            return Ok(trainerLocationViewModel);
+            return Ok(tl);
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAllTrainerLocation()
         {
-            var trainerLocation = _trainerLocationRepository.Get();
+            IEnumerable<TrainerLocation> trainerLocation = _trainerLocationRepository
+                .GetAllTrainerLocation();
 
             return Ok(trainerLocation);
         }
 
+        //GET api/trainerlocation/{id}
+        [HttpGet("{id:int}")]
+        public IActionResult Get(int id)
+        {
+            var trainerLocation = _trainerLocationRepository.GetTrainerLocation(id);
+
+            if (trainerLocation == null)
+            {
+                return NotFound();
+            }
+            return Ok(trainerLocation);
+        }
+
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult DeleteTrainerLocation(int id)
         {
             _trainerLocationRepository.Remove(id);
             return Ok();

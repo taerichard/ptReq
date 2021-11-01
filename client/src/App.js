@@ -1,29 +1,49 @@
 import React from "react";
-//import Header from "./components/shared/Header";
-//import Search from "./components/shared/Search";
-import Nav from "./components/shared/Nav";
-import Footer from "./components/shared/Footer";
-import Trainers from "./components/pages/Trainers";
-import About from "./components/pages/Home";
-import Contact from "./components/pages/Contact";
+import Trainers from "./components/Trainers/index";
+import Header from "./components/Header";
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "./components/ui/Theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./Home";
+import SignUpForm from "./components/SignUpForm";
 
-class App extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <Nav />
+ function App() {
+  return (
+    <div>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Header />
           <Switch>
-            <Route path="/" exact component={About} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/trainers" component={Trainers} />
+            <Route 
+            exact path="/" 
+            component={Home} />
+
+            <Route
+              exact
+              path="/trainer"
+              component={Trainers}
+             />
+            
+            <Route
+              exact
+              path="/location"
+              component={() => <div>Location Component</div>}
+            />
+            <Route
+              exact
+              path="/contact"
+              component={() => <div>Contact Us Component</div>}
+            />
+            <Route
+              exact
+              path="/register"
+              component={SignUpForm}
+            />
           </Switch>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    );
-  }
+        </BrowserRouter>
+      </ThemeProvider>
+    </div>
+  );
 }
 
-export default App;
+export default App; 
