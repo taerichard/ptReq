@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Grid from "@material-ui/core/Grid";
 
-
 function ElevationScroll(props) {
   const { children } = props;
 
@@ -108,12 +107,6 @@ const useStyles = makeStyles((theme) => ({
       </ElevationScroll>
       <div className={classes.toolBarMargin} />
     </React.Fragment>
-      <Grid container direction="column" justify="center">
-        <Grid item className={classes.title}>
-     
-        </Grid>
-      </Grid>
-
     </Grid>
   );
 }

@@ -3,6 +3,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const lightWhite = `#D8CFCF`;
 const white = "#FFFFFF";
 const black = `#000000`;
+
 export default createMuiTheme({
   shadows: ["none"],
   palette: {
@@ -26,6 +27,7 @@ export default createMuiTheme({
       // textShadow: "none",
       // //fontWeight: 800,
       // fontSize: "1rem",
+  
       fontFamily: `Dosis`,
       textTransform: "uppercase",
       fontSize: "12px",

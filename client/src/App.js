@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import theme from "./components/ui/Theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
+import SignUpForm from "./components/SignUpForm";
 
  function App() {
   return (
@@ -36,7 +37,7 @@ import Home from "./Home";
             <Route
               exact
               path="/register"
-              component={() => <div>Sign Up Component</div>}
+              component={SignUpForm}
             />
           </Switch>
         </BrowserRouter>

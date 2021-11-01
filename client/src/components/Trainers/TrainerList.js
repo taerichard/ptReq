@@ -1,7 +1,8 @@
 /* eslint-disable */
-
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+
 import image1 from "../../images/Chloe.jpg";
 import image2 from "../../images/Crystal.jpg";
 import image3 from "../../images/Jake.jpg";
@@ -17,6 +18,8 @@ const useStyles = makeStyles((theme) => {
   }
   imageBox: {
     block: "inline-block";
+    textAlign:'center';
+
   }
 });
 
@@ -41,7 +44,7 @@ const imageList = imageData.map((item) =>
 function TrainerList(props) {
   const classes = useStyles(); 
     return (
-      <div>
+      <div style={{textAlign:'center'}}>
         <div className={classes.imageBox} style={classes.imageBox}>
             {imageList}
         </div>

@@ -17,7 +17,16 @@ const useStyles = makeStyles((theme) => ({
   firstRow: {
     padding: "70px 0",
     backgroundColor: "#f6f6f6",
-  }
+  },
+  title: {
+    padding: "70px 0",
+    backgroundColor: "#f6f6f6",
+    },
+  titleText: {
+    ...theme.typography.tab,
+    marginLeft: "15em",
+    //fontFamily:"Dosis"
+    }
 }));
 
 
@@ -30,11 +39,17 @@ const useStyles = makeStyles((theme) => ({
     alert("clicked");
   }
 
+  const classes = useStyles(); 
+
   return(
     <div>
-      <form onSubmit={handleSubmit}>
+        <Grid container direction="column">
+       <Grid className={classes.title} container direction="row" justify="flex-start">
+        <span className={classes.titleText}>Trainers</span>
+    </Grid>
+    </Grid>
           <TrainerList/>
-      </form>
+      
     </div>
   )
 }
