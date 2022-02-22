@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
   titleText: {
     ...theme.typography.tab,
-    marginLeft: "15em",
+    marginLeft: "19em",
     //fontFamily:"Dosis"
     },
 
@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Dosis",
   },
   secondRowSecondText: {
-    fontFamily: "Open Sans",
+    //fontFamily: "Open Sans",
+    fontFamily: theme.typography.fontFamily,
     fontStyle: "normal",
     fontSize: "14px",
     lineHeight: "24px",
