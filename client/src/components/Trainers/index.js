@@ -24,8 +24,16 @@ const useStyles = makeStyles((theme) => ({
     },
   titleText: {
     ...theme.typography.tab,
-    marginLeft: "15em",
     //fontFamily:"Dosis"
+    },
+    innerTitle:{
+      fontFamily: `Dosis`,
+      textTransform: "uppercase",
+      fontSize: "45px",
+      fontWeight: "600",
+      lineHeight: "15px",
+      letterSpacing: "3px",
+      color: "#232332",
     }
 }));
 
@@ -44,15 +52,16 @@ const useStyles = makeStyles((theme) => ({
   return(
     <div>
         <Grid container direction="column">
-       <Grid className={classes.title} container direction="row" justify="flex-start">
-        <span className={classes.titleText}>Trainers</span>
-    </Grid>
+       <Grid className={classes.title} container direction="row" justify="center">
+          <span className={classes.titleText}>Trainers</span>
+        </Grid>
+        <Grid direction="row">
+            <h2 className={classes.innerTitle}>Available Coaches</h2>
+        </Grid>
     </Grid>
           <TrainerList/>
-      
     </div>
   )
 }
-
 
  export default Trainers;
