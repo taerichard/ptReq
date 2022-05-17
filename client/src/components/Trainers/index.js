@@ -3,6 +3,7 @@ import axios from "axios";
 import TrainerList from "./TrainerList";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import CoachesComponent from "./CoachesComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   titleText: {
     ...theme.typography.tab,
     //fontFamily:"Dosis"
+    
     },
     innerTitle:{
       fontFamily: `Dosis`,
@@ -55,11 +57,12 @@ const useStyles = makeStyles((theme) => ({
        <Grid className={classes.title} container direction="row" justify="center">
           <span className={classes.titleText}>Trainers</span>
         </Grid>
-        <Grid direction="row">
+        <Grid container direction="row" justify="center">
             <h2 className={classes.innerTitle}>Available Coaches</h2>
         </Grid>
     </Grid>
-          <TrainerList/>
+          {/* <TrainerList/> */}
+          <CoachesComponent/>
     </div>
   )
 }
