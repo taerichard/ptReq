@@ -1,46 +1,100 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import coachImage from "../../images/CoachImage.jpg";
+import AcUnitIcon from "@material-ui/icons/AcUnit";
 
 // https://www.dmcinfo.com/latest-thinking/blog/id/10114/a-simple-guide-to-material-ui-grids
 // practice screen resolution
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     container:{
         width: "100%",
         height: "100%"
     },
     title:{
         backgroundColor:'black'
+    },
+    box_main_title:{
+        fontFamily: theme.typography.fontFamily,
+        fontStyle: "normal",
+        fontSize: "18px",
+        lineHeight: "24px",
+        color:'white',
+        backgroundColor:'#000000', 
+        height:'43px',
+        letterSpacing:3
+    },
+    box_title:{
+        fontSize: "40px",
+        letterSpacing: 0,
+        lineHeight: 1.2,
+        fontFamily: "Dosis",
+        margin: 0, 
+    },
+    box_text:{
+        //fontFamily: "Open Sans",
+        fontFamily: theme.typography.fontFamily,
+        fontStyle: "normal",
+        fontSize: "14px",
+        lineHeight: "24px",
+        color:'black'
+        //color: "#7e7e7e",
+        //marginBottom:"15px"
+          
     }
-})
+    
+}));
 
 const CoachesComponent = () => {
 
     const classes = useStyles(); 
 
     return (
-      <Grid container direction="row" justify="center">
-            <Grid item xs={6}>
-                <div style={{backgroundColor:'#000000', height:'43px'}}>Some Text Here</div>
+        <Grid container direction="row" justify="center" alignItems="center">
+            <Grid item xs={5}>
+                <div>5</div>
             </Grid>
-            <Grid container direction="row" justify="center">
-                <Grid item xs={3}>
-                    <div style={{backgroundColor:'#F4F4F2',  height:'438px'}}>
-                    Masters of their craft.
-                    Each of our elite certified coaches has a unique training style. No matter who you work with, you can expect exceptional one-on-one support and personalization.
-                    </div>
-                </Grid>
-                <Grid item xs={3}>
-                    <div style={{backgroundColor:'gray',  height:'438px'}}>Second row</div>
-                </Grid>
+            <Grid item xs={2}>
+                <div>2</div>
             </Grid>
-            <Grid container direction="row" justify="center">
-                <Grid item xs={6}>
-                    <div style={{backgroundColor:'#000000',  height:'84px'}}>last row</div>
-                </Grid>
+            <Grid item xs={5}>
+                <div>5</div>
             </Grid>
+            
         </Grid>
+
+    //   <Grid container direction="row" justify="center">
+    //         <Grid item xs={6}>
+    //             <div className={classes.box_main_title}>Reach your goals.</div>
+    //         </Grid>
+    //         <Grid container direction="row" justify="center">
+    //             <Grid item xs={3}>
+    //                 <div style={{backgroundColor:'#F4F4F2',  height:'438px'}}>
+    //                 <Grid item>
+    //                     <h1 className={classes.box_title}>Masters of their craft.</h1>
+    //                 </Grid>
+    //                 <Grid item>
+    //                     <div className={classes.box_text}>
+    //                     Each of our elite certified coaches has a unique training style. No matter who you work with, you can expect exceptional one-on-one support and personalization.
+    //                     </div>
+    //                 </Grid>
+    //                 </div>
+    //             </Grid>
+    //             <Grid item xs={3}>
+    //                 <div style={{backgroundColor:'#F4F4F2',  height:'438px'}}>
+    //                     <img
+    //                         src={coachImage}
+    //                     />
+    //                 </div>
+    //             </Grid>
+    //         </Grid>
+    //         <Grid container direction="row" justify="center">
+    //             <Grid item xs={6}>
+    //                 <div style={{backgroundColor:'#000000',  height:'84px'}}>last row</div>
+    //             </Grid>
+    //         </Grid>
+    //     </Grid>
     )
 }
   

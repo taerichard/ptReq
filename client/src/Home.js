@@ -8,15 +8,12 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "10em",
     direction: "row",
   },
-  title: {
-    padding: "70px 0",
-    backgroundColor: "#f6f6f6",
-    },
+
   titleText: {
     ...theme.typography.tab,
     marginLeft: "19em",
     //fontFamily:"Dosis"
-    },
+  },
 
   secondRowContainer: {
     padding: "100px 0",
@@ -88,9 +85,6 @@ function Home() {
   const classes = useStyles();
   return (
     <Grid container direction="column">
-       <Grid className={classes.title} container direction="row" justify="flex-start">
-        <span className={classes.titleText}>Home</span>
-    </Grid>
       {/* Second Row Find your Trainer */}
       <Grid
         container
@@ -121,7 +115,7 @@ function Home() {
           sometimes on purpose (injected humour and the like).
         </Grid>
       </Grid>
-     
+
       <Grid
         container
         direction="row"

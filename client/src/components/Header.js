@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- function Header() {
+function Header() {
   const classes = useStyles();
 
   const [value, setValue] = useState(0);
@@ -64,49 +64,43 @@ const useStyles = makeStyles((theme) => ({
 
   return (
     <Grid container direction="column">
-    <React.Fragment>
-      <ElevationScroll>
-        <AppBar className={classes.indicator}>
-          <div className={classes.logoInitial}>RTAE</div>
-          <ToolBar classes={{ root: classes.toolBarMargin }} disableGutters>
-            <Tabs
-              classes={{ indicator: classes.indicator }}
-              textColor="secondary"
-              //indicatorColor="white"
-              onChange={handleChange}
-              value={value}
-            >
-              <Tab
-                className={classes.tab}
-                label="Home"
-                to="/"
-                component={Link}
-              />
-              <Tab
-                className={classes.tab}
-                label="Trainers"
-                to="/trainer"
-                component={Link}
-              />
-            
-              <Tab
-                className={classes.tab}
-                label="Contact Us"
-                to="contact"
-                component={Link}
-              />
-              <Tab
-                className={classes.tab}
-                label="Sign Up"
-                to="/register"
-                component={Link}
-              />
-            </Tabs>
-          </ToolBar>
-        </AppBar>
-      </ElevationScroll>
-      <div className={classes.toolBarMargin} />
-    </React.Fragment>
+      <React.Fragment>
+        <ElevationScroll>
+          <AppBar className={classes.indicator}>
+            <div className={classes.logoInitial}>RTAE</div>
+            <ToolBar classes={{ root: classes.toolBarMargin }} disableGutters>
+              <Tabs
+                classes={{ indicator: classes.indicator }}
+                textColor="secondary"
+                //indicatorColor="white"
+                onChange={handleChange}
+                value={value}
+              >
+                <Tab
+                  className={classes.tab}
+                  label="Home"
+                  to="/"
+                  component={Link}
+                />
+                <Tab
+                  className={classes.tab}
+                  label="Trainers"
+                  to="/trainer"
+                  component={Link}
+                />
+
+                <Tab
+                  className={classes.tab}
+                  label="Contact"
+                  to="contact"
+                  component={Link}
+                />
+              </Tabs>
+            </ToolBar>
+          </AppBar>
+        </ElevationScroll>
+        <div className={classes.toolBarMargin} />
+      </React.Fragment>
     </Grid>
   );
 }

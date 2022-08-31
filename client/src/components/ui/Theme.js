@@ -27,7 +27,7 @@ export default createMuiTheme({
       // textShadow: "none",
       // //fontWeight: 800,
       // fontSize: "1rem",
-  
+    
       fontFamily: `Dosis`,
       textTransform: "uppercase",
       fontSize: "12px",

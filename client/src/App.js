@@ -7,38 +7,23 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import SignUpForm from "./components/SignUpForm";
 
- function App() {
+function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route 
-            exact path="/" 
-            component={Home} />
+            <Route exact path="/" component={Home} />
 
-            <Route
-              exact
-              path="/trainer"
-              component={Trainers}
-             />
-            
-            <Route
-              exact
-              path="/location"
-              component={() => <div>Location Component</div>}
-            />
+            <Route exact path="/trainer" component={Trainers} />
+
             <Route
               exact
               path="/contact"
               component={() => <div>Contact Us Component</div>}
             />
-            <Route
-              exact
-              path="/register"
-              component={SignUpForm}
-            />
+            <Route exact path="/register" component={SignUpForm} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
@@ -46,4 +31,4 @@ import SignUpForm from "./components/SignUpForm";
   );
 }
 
-export default App; 
+export default App;

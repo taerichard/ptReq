@@ -53,14 +53,14 @@ const useStyles = makeStyles((theme) => ({
 
   return(
     <div>
-        <Grid container direction="column">
+        {/* <Grid container direction="column">
        <Grid className={classes.title} container direction="row" justify="center">
           <span className={classes.titleText}>Trainers</span>
         </Grid>
         <Grid container direction="row" justify="center">
             <h2 className={classes.innerTitle}>Available Coaches</h2>
         </Grid>
-    </Grid>
+    </Grid> */}
           {/* <TrainerList/> */}
           <CoachesComponent/>
     </div>
